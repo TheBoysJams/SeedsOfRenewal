@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq4slw2comdvs"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_kxew8"]
+
+[node name="Player" type="Camera3D"]
+fov = 80.0
+script = ExtResource("1_kxew8")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+debug_shape_custom_color = Color(1, 0, 0, 1)
