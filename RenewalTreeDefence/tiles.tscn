@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://betjtwfccsq6u"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bkuq3"]
+size = Vector3(4, 0.1, 4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n2ptj"]
+albedo_color = Color(0.282353, 0.580392, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_s645i"]
+material = SubResource("StandardMaterial3D_n2ptj")
+size = Vector3(4, 0.1, 4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2xyns"]
+albedo_color = Color(0.298039, 0.156863, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qbyx4"]
+material = SubResource("StandardMaterial3D_2xyns")
+size = Vector3(4, 0.1, 4)
+
+[node name="Tiles" type="Node3D"]
+
+[node name="Base" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+mesh = SubResource("BoxMesh_bkuq3")
+
+[node name="Green" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_s645i")
+
+[node name="Brown" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+mesh = SubResource("BoxMesh_qbyx4")
