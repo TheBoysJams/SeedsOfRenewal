@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cn7rsdy4ic8vu"]
+[gd_scene load_steps=6 format=3 uid="uid://cn7rsdy4ic8vu"]
 
 [ext_resource type="Script" path="res://Main Menu/MainMenu.gd" id="1_68kyx"]
 [ext_resource type="Script" path="res://Main Menu/VolumeSlider.gd" id="2_i0hd0"]
+[ext_resource type="PackedScene" uid="uid://bivvk3fq6tihm" path="res://Levels/prototype_level.tscn" id="2_ndo85"]
 [ext_resource type="Texture2D" uid="uid://cdv5po6dwdsmj" path="res://Main Menu/Forest.jpg" id="3_bwmo5"]
 [ext_resource type="AudioStream" uid="uid://dun0cf423gvg4" path="res://Main Menu/SeedsOfRenewal.mp3" id="4_1e8gy"]
 
@@ -12,6 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_68kyx")
+levelToLoad = ExtResource("2_ndo85")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -47,4 +49,6 @@ stream = ExtResource("4_1e8gy")
 autoplay = true
 bus = &"Music"
 
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="value_changed" from="VBoxContainer/VolumeSlider" to="VBoxContainer/VolumeSlider" method="_on_value_changed"]
