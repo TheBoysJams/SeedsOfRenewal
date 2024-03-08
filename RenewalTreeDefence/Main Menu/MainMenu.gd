@@ -1,4 +1,4 @@
-extends Control
+extends MarginContainer
 
 func _ready():
 	$StartButton.connect("pressed", Callable(self, "_on_StartButton_pressed"))

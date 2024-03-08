@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://cn7rsdy4ic8vu"]
+
+[ext_resource type="Script" path="res://Main Menu/MainMenu.gd" id="1_68kyx"]
+[ext_resource type="Script" path="res://Main Menu/Volume Slider.gd" id="2_i0hd0"]
+[ext_resource type="Texture2D" uid="uid://cdv5po6dwdsmj" path="res://Main Menu/Forest.jpg" id="3_bwmo5"]
+[ext_resource type="AudioStream" uid="uid://dun0cf423gvg4" path="res://Main Menu/SeedsOfRenewal.mp3" id="4_1e8gy"]
+
+[node name="MainMenu" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_68kyx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Start Game"
+
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[node name="VolumeSlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+script = ExtResource("2_i0hd0")
+
+[node name="BGSprite" type="Sprite2D" parent="."]
+z_index = -1
+texture_filter = 1
+position = Vector2(576, 324)
+scale = Vector2(1.5, 1.26562)
+texture = ExtResource("3_bwmo5")
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_1e8gy")
+autoplay = true
+bus = &"Music"
+
+[connection signal="value_changed" from="VBoxContainer/VolumeSlider" to="VBoxContainer/VolumeSlider" method="_on_value_changed"]
