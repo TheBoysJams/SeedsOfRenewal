@@ -3,6 +3,11 @@ extends Camera3D
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
 @export var gridmap: GridMap
 
+enum TileType{
+	Living = 1,
+	Dead = 2 #2 is the dead/brown cell
+}
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	var mouse_pos : Vector2 = get_viewport().get_mouse_position()
@@ -13,13 +18,16 @@ func _process(_delta: float) -> void:
 		if collider is GridMap:
 			var collision_point = ray_cast_3d.get_collision_point()
 			var cell = gridmap.local_to_map(collision_point)
-			if gridmap.get_cell_item(cell) == 2: #2 is the dead/brown cell
+			if gridmap.get_cell_item(cell) == TileType.Dead: 
 				Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 				if Input.is_action_just_pressed("left_click"):
-					gridmap.set_cell_item(cell,1) #1 is the living/green cell
+					toggleCell(cell)
 					#var tile_pos = gridmap.map_to_local(cell)
-					#call our tree manager and build the tree
+					#call our tree manager and build the tree at the tile pos
 			else:
 				Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 	else:
 		Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+
+func toggleCell(cell:Vector3i) -> void:
+	gridmap.set_cell_item(cell,wrapi(gridmap.get_cell_item(cell) + 1, 1,3)) #using 3 here because wrapi's 3rd arg is not inclusive (this will be 1 or 2)
