@@ -1,4 +1,5 @@
 extends Camera3D
+class_name Player
 
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
 @export var gridmap: GridMap
@@ -14,6 +15,7 @@ enum TileType{
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	ray_cast_3d.collision_mask = 1
 	var mouse_pos : Vector2 = get_viewport().get_mouse_position()
 	ray_cast_3d.target_position = project_local_ray_normal(mouse_pos) * 100
 	ray_cast_3d.force_raycast_update()
@@ -21,7 +23,7 @@ func _process(_delta: float) -> void:
 		var collider = ray_cast_3d.get_collider()
 		if collider is GridMap:
 			var collision_point = ray_cast_3d.get_collision_point()
-			var cell = gridmap.local_to_map(collision_point)
+			var cell = GetCellAtPosition(collision_point)
 			if gridmap.get_cell_item(cell) == TileType.Dead: 
 				Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 				if Input.is_action_just_pressed("left_click"):
@@ -30,11 +32,24 @@ func _process(_delta: float) -> void:
 						var tile_pos = gridmap.map_to_local(cell)
 						towerManager.BuildTower(selectedTowerIndex,tile_pos)
 						currentGold -= towerCost
-						toggleCell(cell)
+						ToggleCell(cell)
 			else:
 				Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 	else:
 		Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+	#below is temp code to test doing damge (right right click for debugging purpose)
+	ray_cast_3d.collision_mask = 2
+	ray_cast_3d.force_raycast_update()
+	if ray_cast_3d.is_colliding():
+		var collider = ray_cast_3d.get_collider()
+		if collider is Tower:
+			if Input.is_action_just_pressed("right_click"):
+				print(collider)
+				collider.TakeDamage(5)
+	
 
-func toggleCell(cell:Vector3i) -> void:
+func GetCellAtPosition(pos:Vector3) -> Vector3i:
+	return gridmap.local_to_map(pos)
+
+func ToggleCell(cell:Vector3i) -> void:
 	gridmap.set_cell_item(cell,wrapi(gridmap.get_cell_item(cell) + 1, 1,3)) #using 3 here because wrapi's 3rd arg is not inclusive (this will be 1 or 2)
