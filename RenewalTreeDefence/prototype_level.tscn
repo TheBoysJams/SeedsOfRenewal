@@ -38,17 +38,17 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 [node name="Player" parent="." node_paths=PackedStringArray("gridmap", "towerManager") instance=ExtResource("2_djsjw")]
 transform = Transform3D(-2.98405e-08, -0.882447, 0.470411, -7.39423e-09, 0.470411, 0.882447, -1, 2.28543e-08, -2.05623e-08, 7.53423, 15.8372, -3.45818)
 gridmap = NodePath("../GridMap")
-towerManager = NodePath("../TowerManager")
+towerManager = NodePath("TowerManager")
 
-[node name="TowerManager" parent="." instance=ExtResource("3_e3tvo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.362905, -6.95407)
+[node name="TowerManager" parent="Player" instance=ExtResource("3_e3tvo")]
+transform = Transform3D(-2.98405e-08, -7.39423e-09, -1, -0.882447, 0.470411, 2.28543e-08, 0.470411, 0.882447, -2.05623e-08, 3.49589, -0.630721, -17.1994)
 towers = Array[PackedScene]([ExtResource("4_6dpey")])
 
-[node name="Tree" parent="TowerManager" instance=ExtResource("4_6dpey")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -6, -0.262905, 16.9541)
+[node name="Tree" parent="Player/TowerManager" instance=ExtResource("4_6dpey")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.262905, 16.9541)
 
-[node name="Tree2" parent="TowerManager" instance=ExtResource("4_6dpey")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -2, -0.263, 16.954)
+[node name="Tree2" parent="Player/TowerManager" instance=ExtResource("4_6dpey")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.263, 16.954)
 
-[node name="Tree3" parent="TowerManager" instance=ExtResource("4_6dpey")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 2, -0.263, 16.954)
+[node name="Tree3" parent="Player/TowerManager" instance=ExtResource("4_6dpey")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.263, 16.954)
