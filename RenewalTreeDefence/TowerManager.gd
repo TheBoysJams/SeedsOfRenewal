@@ -1,15 +1,15 @@
 extends Node3D
 class_name TowerManager
 
-@export var towers: Array[PackedScene] = []
+@export var towers: Array[TowerInfo] = []
 
 func BuildTower(towerIndex:int, pos:Vector3) -> void:
-	var newTower = towers[towerIndex].instantiate()
+	var newTower = towers[towerIndex].Scene.instantiate()
 	print(newTower)
 	add_child(newTower)
 	newTower.global_position = pos
 
 func GetTowerCost(towerIndex:int) -> int:
-	return 5
+	return towers[towerIndex].Cost
 	
 	
