@@ -2,10 +2,10 @@ extends Camera3D
 
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
 @export var gridmap: GridMap
-@export var towerManager: Node3D
-var selectedTowerIndex:int = 0
+@export var towerManager: TowerManager
 
-var currentGold = 100
+var selectedTowerIndex:int = 0
+var currentGold = 20
 
 enum TileType{
 	Living = 1,
@@ -29,7 +29,7 @@ func _process(_delta: float) -> void:
 					if towerCost <= currentGold:
 						var tile_pos = gridmap.map_to_local(cell)
 						towerManager.BuildTower(selectedTowerIndex,tile_pos)
-						#TODO deduct the cost
+						currentGold -= towerCost
 						toggleCell(cell)
 			else:
 				Input.set_default_cursor_shape(Input.CURSOR_ARROW)

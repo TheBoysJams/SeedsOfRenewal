@@ -1,4 +1,5 @@
 extends Node3D
+class_name TowerManager
 
 @export var towers: Array[PackedScene] = []
 
@@ -9,4 +10,6 @@ func BuildTower(towerIndex:int, pos:Vector3) -> void:
 	newTower.global_position = pos
 
 func GetTowerCost(towerIndex:int) -> int:
-	return 1
+	return 5
+	
+	
