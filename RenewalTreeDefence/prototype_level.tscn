@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bivvk3fq6tihm"]
+[gd_scene load_steps=8 format=3 uid="uid://bivvk3fq6tihm"]
 
 [ext_resource type="MeshLibrary" uid="uid://ckuhs5fq2ae2g" path="res://tiles.tres" id="1_cm1xo"]
 [ext_resource type="PackedScene" uid="uid://bq4slw2comdvs" path="res://player.tscn" id="2_djsjw"]
+[ext_resource type="PackedScene" uid="uid://d3g2gcq604vvv" path="res://tower_manager.tscn" id="3_x0mbg"]
+[ext_resource type="PackedScene" uid="uid://b1lyxto4b02y8" path="res://Towers/tree.tscn" id="4_6dpey"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m6v85"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -33,6 +35,10 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
-[node name="Player" parent="." node_paths=PackedStringArray("gridmap") instance=ExtResource("2_djsjw")]
+[node name="Player" parent="." node_paths=PackedStringArray("gridmap", "towerManager") instance=ExtResource("2_djsjw")]
 transform = Transform3D(-2.98405e-08, -0.882447, 0.470411, -7.39423e-09, 0.470411, 0.882447, -1, 2.28543e-08, -2.05623e-08, 7.53423, 15.8372, -3.45818)
 gridmap = NodePath("../GridMap")
+towerManager = NodePath("../TowerManager")
+
+[node name="TowerManager" parent="." instance=ExtResource("3_x0mbg")]
+towers = Array[PackedScene]([ExtResource("4_6dpey")])

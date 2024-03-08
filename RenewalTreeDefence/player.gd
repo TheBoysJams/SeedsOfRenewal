@@ -2,6 +2,10 @@ extends Camera3D
 
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
 @export var gridmap: GridMap
+@export var towerManager: Node3D
+var selectedTowerIndex:int = 0
+
+var currentGold = 100
 
 enum TileType{
 	Living = 1,
@@ -21,9 +25,12 @@ func _process(_delta: float) -> void:
 			if gridmap.get_cell_item(cell) == TileType.Dead: 
 				Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 				if Input.is_action_just_pressed("left_click"):
-					toggleCell(cell)
-					#var tile_pos = gridmap.map_to_local(cell)
-					#call our tree manager and build the tree at the tile pos
+					var towerCost = towerManager.GetTowerCost(selectedTowerIndex)
+					if towerCost <= currentGold:
+						var tile_pos = gridmap.map_to_local(cell)
+						towerManager.BuildTower(selectedTowerIndex,tile_pos)
+						#TODO deduct the cost
+						toggleCell(cell)
 			else:
 				Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 	else:

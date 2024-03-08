@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3g2gcq604vvv"]
+
+[ext_resource type="Script" path="res://TowerManager.gd" id="1_v5284"]
+
+[node name="TowerManager" type="Node3D"]
+script = ExtResource("1_v5284")
