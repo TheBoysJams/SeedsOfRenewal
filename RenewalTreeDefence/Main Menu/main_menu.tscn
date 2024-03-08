@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cn7rsdy4ic8vu"]
 
 [ext_resource type="Script" path="res://Main Menu/MainMenu.gd" id="1_68kyx"]
-[ext_resource type="Script" path="res://Main Menu/Volume Slider.gd" id="2_i0hd0"]
+[ext_resource type="Script" path="res://Main Menu/VolumeSlider.gd" id="2_i0hd0"]
 [ext_resource type="Texture2D" uid="uid://cdv5po6dwdsmj" path="res://Main Menu/Forest.jpg" id="3_bwmo5"]
 [ext_resource type="AudioStream" uid="uid://dun0cf423gvg4" path="res://Main Menu/SeedsOfRenewal.mp3" id="4_1e8gy"]
 
@@ -30,8 +30,9 @@ text = "Exit"
 
 [node name="VolumeSlider" type="HSlider" parent="VBoxContainer"]
 layout_mode = 2
-max_value = 1.0
+max_value = 10.0
 step = 0.05
+value = 10.0
 script = ExtResource("2_i0hd0")
 
 [node name="BGSprite" type="Sprite2D" parent="."]

@@ -2,7 +2,7 @@
 
 [ext_resource type="MeshLibrary" uid="uid://ckuhs5fq2ae2g" path="res://tiles.tres" id="1_cm1xo"]
 [ext_resource type="PackedScene" uid="uid://bq4slw2comdvs" path="res://player.tscn" id="2_djsjw"]
-[ext_resource type="PackedScene" uid="uid://d3g2gcq604vvv" path="res://tower_manager.tscn" id="3_x0mbg"]
+[ext_resource type="PackedScene" path="res://tower_manager.tscn" id="3_e3tvo"]
 [ext_resource type="PackedScene" uid="uid://b1lyxto4b02y8" path="res://Towers/tree.tscn" id="4_6dpey"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m6v85"]
@@ -40,5 +40,6 @@ transform = Transform3D(-2.98405e-08, -0.882447, 0.470411, -7.39423e-09, 0.47041
 gridmap = NodePath("../GridMap")
 towerManager = NodePath("../TowerManager")
 
-[node name="TowerManager" parent="." instance=ExtResource("3_x0mbg")]
+[node name="TowerManager" parent="." instance=ExtResource("3_e3tvo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.362905, -6.95407)
 towers = Array[PackedScene]([ExtResource("4_6dpey")])
