@@ -5,6 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://d3g2gcq604vvv" path="res://Towers/tower_manager.tscn" id="3_i8pec"]
 [ext_resource type="PackedScene" uid="uid://b1lyxto4b02y8" path="res://Towers/tree.tscn" id="4_bkccc"]
 [ext_resource type="Script" path="res://Towers/TowerInfo.gd" id="5_o1k0l"]
+[ext_resource type="Script" path="res://prototype_level.gd" id="1_jk0m5"]
+
+
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m6v85"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -25,6 +28,7 @@ Scene = ExtResource("4_bkccc")
 Cost = 2
 
 [node name="PrototypeLevel" type="Node3D"]
+script = ExtResource("1_jk0m5")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
@@ -58,3 +62,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.263, 16.954)
 
 [node name="Tree3" parent="Player/TowerManager" instance=ExtResource("4_bkccc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.263, 16.954)
+
+[node name="PauseMenu" parent="." instance=ExtResource("5_tavmd")]
+process_mode = 2
