@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bivvk3fq6tihm"]
+[gd_scene load_steps=11 format=3 uid="uid://bivvk3fq6tihm"]
 
 [ext_resource type="MeshLibrary" uid="uid://ckuhs5fq2ae2g" path="res://Tiles/tiles.tres" id="1_myrcv"]
 [ext_resource type="PackedScene" uid="uid://bq4slw2comdvs" path="res://player.tscn" id="2_o6oum"]
-[ext_resource type="PackedScene" uid="uid://d3g2gcq604vvv" path="res://Assets/Meshes/Tree_1.gltf" id="3_i8pec"]
+[ext_resource type="PackedScene" uid="uid://d3g2gcq604vvv" path="res://Towers/tower_manager.tscn" id="3_i8pec"]
 [ext_resource type="PackedScene" uid="uid://b1lyxto4b02y8" path="res://Towers/tree.tscn" id="4_bkccc"]
-[ext_resource type="Script" path="res://Towers/TowerManager.gd" id="5_ffg71"]
 [ext_resource type="PackedScene" uid="uid://cm4gkchemv2ui" path="res://UI/pause_menu.tscn" id="6_yc7nx"]
 [ext_resource type="Script" path="res://Towers/TowerInfo.gd" id="7_c1d75"]
 
@@ -50,7 +49,6 @@ towerManager = NodePath("TowerManager")
 
 [node name="TowerManager" parent="Player" instance=ExtResource("3_i8pec")]
 transform = Transform3D(-2.98405e-08, -7.39423e-09, -1, -0.882447, 0.470411, 2.28543e-08, 0.470411, 0.882447, -2.05623e-08, 3.49589, -0.630721, -17.1994)
-script = ExtResource("5_ffg71")
 towers = Array[ExtResource("7_c1d75")]([SubResource("Resource_s4chc")])
 
 [node name="Tree" parent="Player/TowerManager" instance=ExtResource("4_bkccc")]
@@ -64,4 +62,3 @@ process_mode = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.263, 16.954)
 
 [node name="PauseMenu" parent="." instance=ExtResource("6_yc7nx")]
-process_mode = 0
