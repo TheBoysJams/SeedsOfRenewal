@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bivvk3fq6tihm"]
+[gd_scene load_steps=12 format=3 uid="uid://bivvk3fq6tihm"]
 
-[ext_resource type="Script" path="res://prototype_level.gd" id="1_jk0m5"]
 [ext_resource type="MeshLibrary" uid="uid://ckuhs5fq2ae2g" path="res://Tiles/tiles.tres" id="1_myrcv"]
 [ext_resource type="PackedScene" uid="uid://bq4slw2comdvs" path="res://player.tscn" id="2_o6oum"]
-[ext_resource type="PackedScene" uid="uid://d3g2gcq604vvv" path="res://Towers/tower_manager.tscn" id="3_i8pec"]
+[ext_resource type="PackedScene" uid="uid://d3g2gcq604vvv" path="res://Assets/Meshes/Tree_1.gltf" id="3_i8pec"]
 [ext_resource type="PackedScene" uid="uid://b1lyxto4b02y8" path="res://Towers/tree.tscn" id="4_bkccc"]
 [ext_resource type="Script" path="res://Towers/TowerManager.gd" id="5_ffg71"]
 [ext_resource type="PackedScene" uid="uid://cm4gkchemv2ui" path="res://UI/pause_menu.tscn" id="6_yc7nx"]
@@ -28,7 +27,6 @@ Scene = ExtResource("4_bkccc")
 Cost = 2
 
 [node name="PrototypeLevel" type="Node3D"]
-script = ExtResource("1_jk0m5")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
@@ -66,4 +64,4 @@ process_mode = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.263, 16.954)
 
 [node name="PauseMenu" parent="." instance=ExtResource("6_yc7nx")]
-process_mode = 2
+process_mode = 0

@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://cdv5po6dwdsmj" path="res://UI/Forest.jpg" id="3_bwmo5"]
 [ext_resource type="AudioStream" uid="uid://dun0cf423gvg4" path="res://UI/SeedsOfRenewal.mp3" id="4_1e8gy"]
 
-
 [node name="MainMenu" type="MarginContainer"]
 anchors_preset = 15
 anchor_right = 1.0

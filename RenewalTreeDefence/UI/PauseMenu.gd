@@ -21,6 +21,15 @@ func _on_ExitButton_pressed():
 	get_tree().paused = false
 	get_tree().change_scene_to_packed(main_menu_scene)
 
+func _unhandled_input(event):
+	if event.is_action_pressed("escape"):
+		if get_tree().paused:
+			get_tree().paused = false
+			visible = false
+		else:
+			get_tree().paused = true
+			visible = true
+			
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
