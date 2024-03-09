@@ -27,12 +27,15 @@ func _process(_delta: float) -> void:
 			if gridmap.get_cell_item(cell) == TileType.Dead: 
 				Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 				if Input.is_action_just_pressed("left_click"):
-					var towerCost = towerManager.GetTowerCost(selectedTowerIndex)
-					if towerCost <= currentGold:
-						var tile_pos = gridmap.map_to_local(cell)
-						towerManager.BuildTower(selectedTowerIndex,tile_pos)
-						currentGold -= towerCost
-						ToggleCell(cell)
+					if towerManager.towers.size() > 0:
+						var towerCost = towerManager.GetTowerCost(selectedTowerIndex)
+						if towerCost <= currentGold:
+							var tile_pos = gridmap.map_to_local(cell)
+							towerManager.BuildTower(selectedTowerIndex,tile_pos)
+							currentGold -= towerCost
+							ToggleCell(cell)
+						else:
+							print("No towers in the towermanager")
 			else:
 				Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 	else:
