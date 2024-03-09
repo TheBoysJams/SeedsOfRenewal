@@ -3,7 +3,7 @@ extends MarginContainer
 @export var levelToLoad: PackedScene
 
 func _on_start_button_pressed() -> void:
-		# Load the level scene as a PackedScene object
+	# Load the level scene as a PackedScene object
 	# Ensure the levelToLoad is not null
 	if levelToLoad:
 		# Change to the loaded scene

@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cn7rsdy4ic8vu"]
+[gd_scene load_steps=5 format=3 uid="uid://cn7rsdy4ic8vu"]
 
 [ext_resource type="Script" path="res://UI/MainMenu.gd" id="1_68kyx"]
 [ext_resource type="Script" path="res://UI/VolumeSlider.gd" id="2_i0hd0"]
 [ext_resource type="PackedScene" uid="uid://bivvk3fq6tihm" path="res://Levels/prototype_level.tscn" id="2_ndo85"]
-[ext_resource type="Texture2D" uid="uid://cdv5po6dwdsmj" path="res://UI/Forest.jpg" id="3_bwmo5"]
-[ext_resource type="AudioStream" uid="uid://dun0cf423gvg4" path="res://UI/SeedsOfRenewal.mp3" id="4_1e8gy"]
+[ext_resource type="Texture2D" uid="uid://cdv5po6dwdsmj" path="res://Assets/Images/Forest.jpg" id="3_bwmo5"]
 
 [node name="MainMenu" type="MarginContainer"]
 process_mode = 3
@@ -44,11 +43,6 @@ texture_filter = 1
 position = Vector2(576, 324)
 scale = Vector2(1.5, 1.26562)
 texture = ExtResource("3_bwmo5")
-
-[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_1e8gy")
-autoplay = true
-bus = &"Music"
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

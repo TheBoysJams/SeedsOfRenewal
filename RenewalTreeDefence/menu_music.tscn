@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cybnjrr4yoxm2"]
+
+[ext_resource type="AudioStream" uid="uid://dun0cf423gvg4" path="res://Assets/Music/SeedsOfRenewal.mp3" id="1_55tm5"]
+
+[node name="MenuMusic" type="AudioStreamPlayer"]
+stream = ExtResource("1_55tm5")
+autoplay = true
+bus = &"Music"
