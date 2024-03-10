@@ -18,3 +18,8 @@ func TakeDamage(damage:int) -> void:
 			remains.global_position = global_position
 			remains.rotation_degrees = rotation_degrees
 		queue_free()
+
+
+func _on_area_3d_area_entered(area: Area3D) -> void:
+	TakeDamage(area.damage)
+	area.queue_free()

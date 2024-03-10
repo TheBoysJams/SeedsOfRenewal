@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://tiarduwboie7"]
+
+[ext_resource type="Script" path="res://EnemyManager.gd" id="1_w72g7"]
+
+[node name="EnemyManager" type="Node3D"]
+script = ExtResource("1_w72g7")
+
+[node name="Spawners" type="Node" parent="."]
+
+[node name="Enemies" type="Node" parent="." groups=["enemies"]]
+
+[node name="SpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
