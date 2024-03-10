@@ -25,13 +25,13 @@ func _process(_delta: float) -> void:
 			var collision_point = ray_cast_3d.get_collision_point()
 			var cell = GetCellAtPosition(collision_point)
 			if gridmap.get_cell_item(cell) == TileType.Dead: 
+				print(collision_point)
 				Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 				if Input.is_action_just_pressed("left_click"):
 					if towerManager.towers.size() > 0:
 						var towerCost = towerManager.GetTowerCost(selectedTowerIndex)
 						if towerCost <= currentGold:
-							var tile_pos = gridmap.map_to_local(cell)
-							towerManager.BuildTower(selectedTowerIndex,tile_pos)
+							towerManager.BuildTower(selectedTowerIndex,GetCellLocalPosition(cell))
 							currentGold -= towerCost
 							ToggleCell(cell)
 						else:
@@ -53,6 +53,9 @@ func _process(_delta: float) -> void:
 
 func GetCellAtPosition(pos:Vector3) -> Vector3i:
 	return gridmap.local_to_map(pos)
+	
+func GetCellLocalPosition(pos:Vector3i) -> Vector3:
+	return gridmap.map_to_local(pos)
 
 func ToggleCell(cell:Vector3i) -> void:
 	gridmap.set_cell_item(cell,wrapi(gridmap.get_cell_item(cell) + 1, 1,3)) #using 3 here because wrapi's 3rd arg is not inclusive (this will be 1 or 2)
