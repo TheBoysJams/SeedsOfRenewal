@@ -23,7 +23,6 @@ func GetTowerCost(towerIndex:int) -> int:
 func RemoveTowerAtPosition(pos:Vector3) -> void:
 	var currentTowers = get_children()
 	print(currentTowers)
-	var xyz = currentTowers.filter(func(node): return node.global_position.is_equal_approx(pos))
-	print(xyz)
-	if xyz.size() == 1:
-		xyz[0].queue_free()
+	var foundTowersAtPos = currentTowers.filter(func(node): return node.global_position.is_equal_approx(pos))
+	if foundTowersAtPos.size() == 1:
+		foundTowersAtPos[0].queue_free()
