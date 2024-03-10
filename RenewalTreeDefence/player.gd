@@ -39,8 +39,8 @@ func _process(_delta: float) -> void:
 							towerManager.BuildTower(selectedTowerIndex,GetCellLocalPosition(cell))
 							gold -= towerCost
 							SetCellState(cell,TileType.Living)
-						else:
-							print("No towers in the towermanager")
+					else:
+						print("No towers in the towermanager")
 			else:
 				Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 	else:
