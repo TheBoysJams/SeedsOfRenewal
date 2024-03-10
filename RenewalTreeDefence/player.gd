@@ -25,7 +25,6 @@ func _process(_delta: float) -> void:
 			var collision_point = ray_cast_3d.get_collision_point()
 			var cell = GetCellAtPosition(collision_point)
 			if gridmap.get_cell_item(cell) == TileType.Dead: 
-				print(collision_point)
 				Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 				if Input.is_action_just_pressed("left_click"):
 					if towerManager.towers.size() > 0:
