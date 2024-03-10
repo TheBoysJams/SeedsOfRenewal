@@ -3,6 +3,8 @@ class_name Tower
 
 @export var deathScene:PackedScene
 
+signal EnemyKilled
+
 var health := 10
 var cost := 5
 
@@ -22,4 +24,5 @@ func TakeDamage(damage:int) -> void:
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	TakeDamage(area.damage)
+	EnemyKilled.emit()
 	area.queue_free()

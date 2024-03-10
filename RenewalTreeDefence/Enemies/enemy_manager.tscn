@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://tiarduwboie7"]
+[gd_scene load_steps=3 format=3 uid="uid://tiarduwboie7"]
 
 [ext_resource type="Script" path="res://EnemyManager.gd" id="1_w72g7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3mexy"]
+size = Vector3(18.1684, 7.08893, 1)
 
 [node name="EnemyManager" type="Node3D"]
 script = ExtResource("1_w72g7")
@@ -10,6 +13,15 @@ script = ExtResource("1_w72g7")
 [node name="Enemies" type="Node" parent="." groups=["enemies"]]
 
 [node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
 autostart = true
 
+[node name="KillVolume" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillVolume"]
+shape = SubResource("BoxShape3D_3mexy")
+
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="area_entered" from="KillVolume" to="." method="_on_kill_volume_area_entered"]

@@ -136,6 +136,26 @@ towerManager = NodePath("TowerManager")
 transform = Transform3D(-2.98405e-08, -7.39423e-09, -1, -0.882447, 0.470411, 2.28543e-08, 0.470411, 0.882447, -2.05623e-08, 3.49589, -0.630721, -17.1994)
 towers = Array[ExtResource("7_c1d75")]([SubResource("Resource_s4chc")])
 
+[node name="UI" type="Control" parent="Player"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 2
+size_flags_vertical = 6
+
+[node name="Gold" type="Label" parent="Player/UI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 76.0
+grow_vertical = 0
+text = "Gold : 000"
+
 [node name="PauseMenu" parent="." instance=ExtResource("6_yc7nx")]
 visible = false
 
@@ -159,6 +179,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.69518, 1.46179, -22.4716)
 
 [node name="Destination" parent="EnemyManager/Spawners/Spawner3" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 35.7676)
+
+[node name="KillVolume" parent="EnemyManager" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.98121, 15.0844)
+
+[node name="CollisionShape3D" parent="EnemyManager/KillVolume" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.692719, -0.9086, 0)
 
 [editable path="EnemyManager"]
 [editable path="EnemyManager/Spawners/Spawner"]

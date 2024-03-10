@@ -4,14 +4,21 @@ class_name Player
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
 @export var gridmap: GridMap
 @export var towerManager: TowerManager
+@export var startingGold = 20
 
 var selectedTowerIndex:int = 0
-var currentGold = 20
 
+var gold: int:
+	set(gold_in):
+		gold = max(gold_in,0)
+		$UI/Gold.text = "Gold: " + str(gold)
 enum TileType{
 	Living = 1,
 	Dead = 2 #2 is the dead/brown cell
 }
+
+func _ready() -> void:
+	gold = startingGold
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -29,9 +36,9 @@ func _process(_delta: float) -> void:
 				if Input.is_action_just_pressed("left_click"):
 					if towerManager.towers.size() > 0:
 						var towerCost = towerManager.GetTowerCost(selectedTowerIndex)
-						if towerCost <= currentGold:
+						if gold >= towerCost:
 							towerManager.BuildTower(selectedTowerIndex,GetCellLocalPosition(cell))
-							currentGold -= towerCost
+							gold -= towerCost
 							ToggleCell(cell)
 						else:
 							print("No towers in the towermanager")
