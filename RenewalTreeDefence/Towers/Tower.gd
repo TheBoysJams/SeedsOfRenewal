@@ -13,7 +13,7 @@ func TakeDamage(damage:int) -> void:
 	if(health <= 0):
 		var towerManager = get_parent() as TowerManager
 		var player = towerManager.get_parent() as Player
-		player.ToggleCell(player.GetCellAtPosition(global_position))
+		player.SetCellState(player.GetCellAtPosition(global_position),player.TileType.Dead)
 		if deathScene:
 			var remains = deathScene.instantiate()
 			towerManager.add_child(remains)

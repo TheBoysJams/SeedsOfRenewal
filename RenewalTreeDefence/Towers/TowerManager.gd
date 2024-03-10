@@ -7,7 +7,7 @@ class_name TowerManager
 func _ready() -> void:
 	#Building the starting tree with code and not just adding nodes to the map
 	var startingCell = player.GetCellAtPosition(Vector3(-1.956554, 0.15, 10.19691))
-	player.ToggleCell(startingCell)
+	player.SetCellState(startingCell,player.TileType.Living)
 	BuildTower(0,player.GetCellLocalPosition(startingCell))
 	
 func BuildTower(towerIndex:int, pos:Vector3) -> void:
