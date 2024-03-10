@@ -1,12 +1,11 @@
 extends HSlider
 
-var audio_bus_name = "Music"
-
-@onready var _bus = AudioServer.get_bus_index(audio_bus_name)
+@export var audio_bus_name = "Music"
+var _bus: int
 
 func _ready():
-	AudioServer.set_bus_volume_db(_bus, linear_to_db(0.5))
+	_bus = AudioServer.get_bus_index(audio_bus_name)
 	value = db_to_linear(AudioServer.get_bus_volume_db(_bus))
 	
-func _on_value_changed(value):
-	AudioServer.set_bus_volume_db(_bus, linear_to_db(value))
+func _on_value_changed(volume):
+	AudioServer.set_bus_volume_db(_bus, linear_to_db(volume))

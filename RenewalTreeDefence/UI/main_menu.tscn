@@ -34,7 +34,6 @@ text = "Exit"
 layout_mode = 2
 max_value = 1.0
 step = 0.05
-value = 1.0
 script = ExtResource("2_i0hd0")
 
 [node name="BGSprite" type="Sprite2D" parent="."]
