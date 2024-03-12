@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://betjtwfccsq6u"]
+[gd_scene load_steps=7 format=3 uid="uid://betjtwfccsq6u"]
 
 [ext_resource type="PackedScene" uid="uid://mrwwdlt626y0" path="res://Assets/Meshes/Dirt.gltf" id="1_bhq0c"]
 [ext_resource type="PackedScene" uid="uid://jvgobq1urynn" path="res://Assets/Meshes/Grass.gltf" id="2_vrt8x"]
@@ -8,6 +8,9 @@
 data = PackedVector3Array(-1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, 1, -1, -1, -1, -1, 1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1, -1, 1, -1)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_e0klm"]
+data = PackedVector3Array(-1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, 1, -1, -1, -1, -1, 1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1, -1, 1, -1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_f2um7"]
 data = PackedVector3Array(-1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, 1, -1, -1, -1, -1, 1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1, -1, 1, -1)
 
 [node name="Tiles" type="Node3D"]
@@ -33,5 +36,12 @@ shape = SubResource("ConcavePolygonShape3D_e0klm")
 [node name="Leaves2" parent="." instance=ExtResource("3_qjxd7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.42894)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Leaves2/Leaves" index="0"]
+transform = Transform3D(0.99, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Leaves2/Leaves/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_f2um7")
+
 [editable path="Dirt2"]
 [editable path="Grass2"]
+[editable path="Leaves2"]

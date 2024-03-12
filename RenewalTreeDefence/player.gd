@@ -48,20 +48,21 @@ func _process(_delta: float) -> void:
 		Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 		return
 	var collider = ray_cast_3d.get_collider()
-	if collider is GridMap:
-		var collision_point = ray_cast_3d.get_collision_point()
-		var cell = GetCellAtPosition(collision_point)
-		var selectedTower = towerManager.towers[selectedTowerIndex]
-		if gridmap.get_cell_item(cell) == selectedTower.TileType:
-			Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
-			if Input.is_action_just_pressed("left_click"):
-				var towerCost = selectedTower.Cost
-				if gold >= towerCost:
-					towerManager.BuildTower(selectedTowerIndex,GetCellLocalPosition(cell))
-					gold -= towerCost
-					SetCellState(cell,TileType.Leaves)
-		else: Input.set_default_cursor_shape(Input.CURSOR_FORBIDDEN)
-	else: Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+	if !collider is GridMap:
+		Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+		return
+	var collision_point = ray_cast_3d.get_collision_point()
+	var cell = GetCellAtPosition(collision_point)
+	var selectedTower = towerManager.towers[selectedTowerIndex]
+	if gridmap.get_cell_item(cell) == selectedTower.TileType:
+		Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+		if Input.is_action_just_pressed("left_click"):
+			if gold >= selectedTower.Cost:
+				towerManager.BuildTower(selectedTowerIndex,GetCellLocalPosition(cell))
+				gold -= selectedTower.Cost
+				SetCellState(cell,TileType.Leaves)
+	else: Input.set_default_cursor_shape(Input.CURSOR_FORBIDDEN)
+
 
 
 func GetCellAtPosition(pos:Vector3) -> Vector3i:
