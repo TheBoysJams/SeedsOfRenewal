@@ -10,8 +10,6 @@ script = ExtResource("1_w72g7")
 
 [node name="Spawners" type="Node" parent="."]
 
-[node name="Enemies" type="Node" parent="." groups=["enemies"]]
-
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true

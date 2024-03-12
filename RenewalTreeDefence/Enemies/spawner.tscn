@@ -1,10 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2knbdbf1tcu3"]
+[gd_scene load_steps=3 format=3 uid="uid://d2knbdbf1tcu3"]
 
 [ext_resource type="Script" path="res://Enemies/spawner.gd" id="1_h4crg"]
 
-[node name="Spawner" type="Node3D"]
-script = ExtResource("1_h4crg")
+[sub_resource type="Curve3D" id="Curve3D_1emvi"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -4.55884, 1.85966e-05, 4.64895, 0, 0, 0, 0, 0, 0, 12.162, 1.85966e-05, 4.58312, 0, 0, 0, 0, 0, 0, 12.0961, 1.85966e-05, 12.746, 0, 0, 0, 0, 0, 0, 3.93321, 1.85966e-05, 12.8777, 0, 0, 0, 0, 0, 0, 3.4724, 1.85966e-05, 37.6297),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
 
-[node name="Destination" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0119641)
-gizmo_extents = 0.52
+[node name="Path3D" type="Path3D"]
+curve = SubResource("Curve3D_1emvi")
+script = ExtResource("1_h4crg")
