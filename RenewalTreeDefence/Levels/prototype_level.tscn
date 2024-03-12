@@ -165,11 +165,5 @@ enemy = ExtResource("7_3rd4b")
 [node name="Spawner" parent="EnemyManager/Spawners" index="0" instance=ExtResource("7_oy6ys")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.93503, 2.11351, -22.4716)
 
-[node name="KillVolume" parent="EnemyManager" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.98121, 15.0844)
-
-[node name="CollisionShape3D" parent="EnemyManager/KillVolume" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.692719, -0.9086, 0)
-
 [editable path="EnemyManager"]
 [editable path="EnemyManager/Spawners/Spawner"]
