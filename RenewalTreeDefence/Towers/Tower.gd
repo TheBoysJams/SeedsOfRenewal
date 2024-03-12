@@ -1,7 +1,7 @@
 extends StaticBody3D
 class_name Tower
 
-@export var deathScene:PackedScene
+#@export var deathScene:PackedScene
 
 signal EnemyKilled
 
@@ -13,12 +13,12 @@ func TakeDamage(damage:int) -> void:
 	if(health <= 0):
 		var towerManager = get_parent() as TowerManager
 		var player = towerManager.get_parent() as Player
-		player.SetCellState(player.GetCellAtPosition(global_position),player.TileType.Dead)
-		if deathScene:
-			var remains = deathScene.instantiate()
-			towerManager.add_child(remains)
-			remains.global_position = global_position
-			remains.rotation_degrees = rotation_degrees
+		player.SetCellState(player.GetCellAtPosition(global_position),player.TileType.Dirt)
+		#if deathScene:
+			#var remains = deathScene.instantiate()
+			#towerManager.add_child(remains)
+			#remains.global_position = global_position
+			#remains.rotation_degrees = rotation_degrees
 		queue_free()
 
 

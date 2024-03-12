@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bclb7tmhi0eoo"]
+
+[ext_resource type="Script" path="res://Towers/Tower.gd" id="1_iqp06"]
+[ext_resource type="PackedScene" uid="uid://bdtm8816umdhp" path="res://Assets/Meshes/Mushroom.gltf" id="3_0kpos"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lhw5v"]
+size = Vector3(1.75439, 2.19678, 1.73438)
+
+[node name="StaticBody3D" type="StaticBody3D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_iqp06")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0540634, 2.00271, 0.102734)
+shape = SubResource("BoxShape3D_lhw5v")
+
+[node name="Mushroom2" parent="." instance=ExtResource("3_0kpos")]
+transform = Transform3D(0.497439, 0, -0.0505368, 0, 0.5, 0, 0.0505368, 0, 0.497439, -0.226, 1, 0.398)
+
+[node name="Mushroom3" parent="." instance=ExtResource("3_0kpos")]
+transform = Transform3D(0.0844597, 0, -0.492815, 0, 0.5, 0, 0.492815, 0, 0.0844597, 0.417, 1, -0.257)
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

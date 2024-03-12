@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://gp5xd5by5ert"]
+
+[ext_resource type="PackedScene" uid="uid://cdc5ieefpfalg" path="res://Assets/Meshes/Crystal_Big.gltf" id="1_2ao5g"]
+
+[node name="Core" type="Node3D"]
+
+[node name="Crystal_Big2" parent="." instance=ExtResource("1_2ao5g")]
