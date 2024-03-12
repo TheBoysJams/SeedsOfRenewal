@@ -11,8 +11,8 @@ func _ready() -> void:
 	BuildTower(0,player.GetCellLocalPosition(startingCell))
 	
 func BuildTower(towerIndex:int, pos:Vector3) -> void:
-	RemoveTowerAtPosition(pos)
 	var newTower = towers[towerIndex].Scene.instantiate()
+	print(newTower)
 	add_child(newTower)
 	newTower.global_position = pos
 	newTower.rotation_degrees = Vector3( 0, randi_range(0,360), 0 )
@@ -20,8 +20,4 @@ func BuildTower(towerIndex:int, pos:Vector3) -> void:
 func GetTowerCost(towerIndex:int) -> int:
 	return towers[towerIndex].Cost
 	
-func RemoveTowerAtPosition(pos:Vector3) -> void:
-	var currentTowers = get_children()
-	var foundTowersAtPos = currentTowers.filter(func(node): return node.global_position.is_equal_approx(pos))
-	if foundTowersAtPos.size() == 1:
-		foundTowersAtPos[0].queue_free()
+	
