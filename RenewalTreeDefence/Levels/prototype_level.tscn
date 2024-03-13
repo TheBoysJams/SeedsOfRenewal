@@ -120,7 +120,7 @@ player = NodePath("../Player")
 enemy = ExtResource("7_3rd4b")
 
 [node name="Spawner" parent="EnemyManager/Spawners" index="0" instance=ExtResource("7_oy6ys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.32007, 2.98865, -15.0169)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.32007, 2.03247, -15.0169)
 curve = SubResource("Curve3D_gw3rc")
 
 [node name="Core" parent="." instance=ExtResource("10_go0r7")]
