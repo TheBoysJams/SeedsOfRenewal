@@ -5,3 +5,7 @@
 [node name="Core" type="Node3D"]
 
 [node name="Crystal_Big2" parent="." instance=ExtResource("1_2ao5g")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78174, 0)
+light_color = Color(1, 0, 1, 1)
