@@ -73,7 +73,7 @@ towerManager = NodePath("TowerManager")
 transform = Transform3D(-2.98405e-08, -7.39423e-09, -1, -0.882447, 0.470411, 2.28543e-08, 0.470411, 0.882447, -2.05623e-08, 3.49589, -0.630721, -17.1994)
 towers = Array[ExtResource("7_c1d75")]([SubResource("Resource_s4chc"), SubResource("Resource_g3klv")])
 
-[node name="UI" type="Control" parent="Player"]
+[node name="GUI" type="Control" parent="Player"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -84,7 +84,7 @@ size_flags_horizontal = 2
 size_flags_vertical = 6
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Player/UI"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Player/GUI"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -93,22 +93,27 @@ offset_top = -50.0
 offset_right = 118.0
 grow_vertical = 0
 
-[node name="Gold" type="Label" parent="Player/UI/VBoxContainer"]
+[node name="Gold" type="Label" parent="Player/GUI/VBoxContainer"]
 layout_mode = 2
 text = "Gold : 000"
 
-[node name="SelectedPlant" type="Label" parent="Player/UI/VBoxContainer"]
+[node name="Health" type="Label" parent="Player/GUI/VBoxContainer"]
+layout_mode = 2
+text = "Health : 0"
+
+[node name="SelectedPlant" type="Label" parent="Player/GUI/VBoxContainer"]
 layout_mode = 2
 text = "Selected Plant: "
 
-[node name="SelectedPlantCost" type="Label" parent="Player/UI/VBoxContainer"]
+[node name="SelectedPlantCost" type="Label" parent="Player/GUI/VBoxContainer"]
 layout_mode = 2
 text = "Plant Cost: "
 
 [node name="PauseMenu" parent="." instance=ExtResource("6_yc7nx")]
 visible = false
 
-[node name="EnemyManager" parent="." instance=ExtResource("6_qntgy")]
+[node name="EnemyManager" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_qntgy")]
+player = NodePath("../Player")
 enemy = ExtResource("7_3rd4b")
 
 [node name="Spawner" parent="EnemyManager/Spawners" index="0" instance=ExtResource("7_oy6ys")]

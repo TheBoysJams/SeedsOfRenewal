@@ -1,5 +1,7 @@
 extends Node3D
 
+@export var player:Player
+
 @onready var spawners = $Spawners.get_children()
 
 @export var enemy:PackedScene

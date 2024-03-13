@@ -6,17 +6,24 @@ class_name Player
 @export var gridmap: GridMap
 @export var towerManager: TowerManager
 @export var startingGold = 20
+@export var startingHealth = 20
+
+
+var health:
+	set(hp_in):
+		health = hp_in
+		$GUI/VBoxContainer/Health.text = "Health: " + str(health)
 
 var selectedTowerIndex:int:
 	set(index_in):
 		selectedTowerIndex = index_in
-		$UI/VBoxContainer/SelectedPlant.text = "Selected Plant: " + towerManager.towers[selectedTowerIndex].Name
-		$UI/VBoxContainer/SelectedPlantCost.text = "Selected Cost: " + str(towerManager.towers[selectedTowerIndex].Cost)
+		$GUI/VBoxContainer/SelectedPlant.text = "Selected Plant: " + towerManager.towers[selectedTowerIndex].Name
+		$GUI/VBoxContainer/SelectedPlantCost.text = "Plant Cost: " + str(towerManager.towers[selectedTowerIndex].Cost)
 
 var gold: int:
 	set(gold_in):
 		gold = max(gold_in,0)
-		$UI/VBoxContainer/Gold.text = "Gold: " + str(gold)
+		$GUI/VBoxContainer/Gold.text = "Gold: " + str(gold)
 
 enum TileType {
 	Dirt = 0,
@@ -25,6 +32,7 @@ enum TileType {
 }
 
 func _ready() -> void:
+	health = startingHealth
 	gold = startingGold
 	selectedTowerIndex = 0
 

@@ -9,6 +9,7 @@
 [sub_resource type="BoxMesh" id="BoxMesh_rrs61"]
 
 [node name="Enemy" type="PathFollow3D"]
+loop = false
 script = ExtResource("1_4fwii")
 
 [node name="Enemy" type="Area3D" parent="."]
