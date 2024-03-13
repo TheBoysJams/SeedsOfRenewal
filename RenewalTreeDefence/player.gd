@@ -6,13 +6,17 @@ class_name Player
 @export var gridmap: GridMap
 @export var towerManager: TowerManager
 @export var startingGold = 20
-@export var startingHealth = 20
+@export var startingHealth = 5
+@onready var defeat_menu: Control = $"../DefeatMenu"
 
 
 var health:
 	set(hp_in):
 		health = hp_in
 		$GUI/VBoxContainer/Health.text = "Health: " + str(health)
+		if(health) == 0:
+			get_tree().paused = true
+			defeat_menu.visible = true
 
 var selectedTowerIndex:int:
 	set(index_in):

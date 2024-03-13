@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bivvk3fq6tihm"]
+[gd_scene load_steps=19 format=3 uid="uid://bivvk3fq6tihm"]
 
 [ext_resource type="MeshLibrary" uid="uid://dej0ouyeati5k" path="res://Tiles/tiles.tres" id="1_onx2c"]
 [ext_resource type="PackedScene" uid="uid://bq4slw2comdvs" path="res://player.tscn" id="2_o6oum"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c4xnjtuw2fxux" path="res://Enemies/enemy.tscn" id="7_3rd4b"]
 [ext_resource type="Script" path="res://Towers/TowerInfo.gd" id="7_c1d75"]
 [ext_resource type="PackedScene" uid="uid://d2knbdbf1tcu3" path="res://Enemies/spawner.tscn" id="7_oy6ys"]
+[ext_resource type="PackedScene" uid="uid://cgmgbg17x5sjp" path="res://UI/defeat_menu.tscn" id="8_dutr8"]
 [ext_resource type="PackedScene" uid="uid://gp5xd5by5ert" path="res://Towers/core.tscn" id="10_go0r7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m6v85"]
@@ -111,6 +112,8 @@ text = "Plant Cost: "
 
 [node name="PauseMenu" parent="." instance=ExtResource("6_yc7nx")]
 visible = false
+
+[node name="DefeatMenu" parent="." instance=ExtResource("8_dutr8")]
 
 [node name="EnemyManager" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_qntgy")]
 player = NodePath("../Player")

@@ -2,7 +2,7 @@ extends PathFollow3D
 
 signal CoreReached(int)
 
-var speed := 30
+var speed := 10
 var damage := 1
 
 func _process(delta: float) -> void:
