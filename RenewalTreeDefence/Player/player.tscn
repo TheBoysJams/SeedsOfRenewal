@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bq4slw2comdvs"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_kxew8"]
+[ext_resource type="Script" path="res://Player/player.gd" id="1_kxew8"]
 
 [node name="Player" type="Camera3D"]
 fov = 80.0

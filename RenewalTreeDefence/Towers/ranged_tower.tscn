@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://bt01d7s2iroc3"]
+
+[ext_resource type="PackedScene" uid="uid://3digbyjodxia" path="res://Towers/tower_base.tscn" id="1_cnlhl"]
+[ext_resource type="PackedScene" uid="uid://jvgobq1urynn" path="res://Assets/Meshes/Grass.gltf" id="2_a1h4j"]
+[ext_resource type="PackedScene" uid="uid://nxul2h8o43xx" path="res://Assets/Meshes/Tree_2.gltf" id="3_go6wr"]
+
+[node name="RangedTower" instance=ExtResource("1_cnlhl")]
+
+[node name="Grass2" parent="." index="1" instance=ExtResource("2_a1h4j")]
+visible = false
+
+[node name="Tree_22" parent="." index="2" instance=ExtResource("3_go6wr")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.0222578, 0.979091, -0.0122623)

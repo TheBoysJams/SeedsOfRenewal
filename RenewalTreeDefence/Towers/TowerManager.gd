@@ -10,7 +10,6 @@ func BuildTower(towerIndex:int, pos:Vector3) -> void:
 	add_child(newTower)
 	newTower.global_position = pos
 	newTower.rotation_degrees = Vector3( 0, randi_range(0,360), 0 )
-	newTower.connect("EnemyKilled", func():player.gold += 2)
 	
 func GetTowersAtPosition(pos:Vector3) -> Array[Node]:
 	var currentTowers = get_children()

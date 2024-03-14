@@ -1,10 +1,10 @@
 [gd_scene load_steps=19 format=3 uid="uid://bivvk3fq6tihm"]
 
 [ext_resource type="MeshLibrary" uid="uid://dej0ouyeati5k" path="res://Tiles/tiles.tres" id="1_onx2c"]
-[ext_resource type="PackedScene" uid="uid://bq4slw2comdvs" path="res://player.tscn" id="2_o6oum"]
+[ext_resource type="PackedScene" uid="uid://bq4slw2comdvs" path="res://Player/player.tscn" id="2_o6oum"]
 [ext_resource type="PackedScene" uid="uid://d3g2gcq604vvv" path="res://Towers/tower_manager.tscn" id="3_i8pec"]
-[ext_resource type="PackedScene" uid="uid://bclb7tmhi0eoo" path="res://Towers/mushroom.tscn" id="4_cxa68"]
-[ext_resource type="PackedScene" uid="uid://b1lyxto4b02y8" path="res://Towers/tree.tscn" id="6_jiavm"]
+[ext_resource type="PackedScene" uid="uid://nuipramw4dbp" path="res://Towers/aoe_tower.tscn" id="4_4gj6x"]
+[ext_resource type="PackedScene" uid="uid://bt01d7s2iroc3" path="res://Towers/ranged_tower.tscn" id="6_o3r1y"]
 [ext_resource type="PackedScene" uid="uid://tiarduwboie7" path="res://Enemies/enemy_manager.tscn" id="6_qntgy"]
 [ext_resource type="PackedScene" uid="uid://cm4gkchemv2ui" path="res://UI/pause_menu.tscn" id="6_yc7nx"]
 [ext_resource type="PackedScene" uid="uid://c4xnjtuw2fxux" path="res://Enemies/enemy.tscn" id="7_3rd4b"]
@@ -28,15 +28,15 @@ glow_enabled = true
 
 [sub_resource type="Resource" id="Resource_s4chc"]
 script = ExtResource("7_c1d75")
-Scene = ExtResource("4_cxa68")
+Scene = ExtResource("4_4gj6x")
 Cost = 2
 TileType = 0
 Name = "Mushroom"
 
-[sub_resource type="Resource" id="Resource_g3klv"]
+[sub_resource type="Resource" id="Resource_64dhp"]
 script = ExtResource("7_c1d75")
-Scene = ExtResource("6_jiavm")
-Cost = 5
+Scene = ExtResource("6_o3r1y")
+Cost = 4
 TileType = 1
 Name = "Tree"
 
@@ -71,8 +71,8 @@ gridmap = NodePath("../GridMap")
 towerManager = NodePath("TowerManager")
 
 [node name="TowerManager" parent="Player" instance=ExtResource("3_i8pec")]
-transform = Transform3D(-2.98405e-08, -7.39423e-09, -1, -0.882447, 0.470411, 2.28543e-08, 0.470411, 0.882447, -2.05623e-08, 3.49589, -0.630721, -17.1994)
-towers = Array[ExtResource("7_c1d75")]([SubResource("Resource_s4chc"), SubResource("Resource_g3klv")])
+transform = Transform3D(-2.98405e-08, -7.39423e-09, -1, -0.882447, 0.470411, 2.28543e-08, 0.470411, 0.882447, -2.05623e-08, 4.59178, -0.751675, -17.1761)
+towers = Array[ExtResource("7_c1d75")]([SubResource("Resource_s4chc"), SubResource("Resource_64dhp")])
 
 [node name="GUI" type="Control" parent="Player"]
 layout_mode = 3

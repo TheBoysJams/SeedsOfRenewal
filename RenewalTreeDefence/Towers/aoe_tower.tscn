@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://nuipramw4dbp"]
+
+[ext_resource type="PackedScene" uid="uid://3digbyjodxia" path="res://Towers/tower_base.tscn" id="1_swv4t"]
+[ext_resource type="Script" path="res://Towers/aoe_tower.gd" id="2_esod3"]
+[ext_resource type="PackedScene" uid="uid://bdtm8816umdhp" path="res://Assets/Meshes/Mushroom.gltf" id="3_37pim"]
+[ext_resource type="PackedScene" uid="uid://jvgobq1urynn" path="res://Assets/Meshes/Grass.gltf" id="4_qx20c"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dp787"]
+radius = 1.0
+
+[node name="AOETower" instance=ExtResource("1_swv4t")]
+script = ExtResource("2_esod3")
+
+[node name="Mushroom2" parent="." index="1" instance=ExtResource("3_37pim")]
+transform = Transform3D(0.46689, 0, -0.178923, 0, 0.5, 0, 0.178923, 0, 0.46689, -0.259203, 0.999286, 0.296287)
+
+[node name="Mushroom3" parent="." index="2" instance=ExtResource("3_37pim")]
+transform = Transform3D(0.474339, 0, 0.158123, 0, 0.5, 0, -0.158123, 0, 0.474339, 0.30088, 0.999286, -0.341881)
+
+[node name="Grass2" parent="." index="3" instance=ExtResource("4_qx20c")]
+visible = false
+
+[node name="AOEArea" type="Area3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95998, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AOEArea" index="0"]
+shape = SubResource("SphereShape3D_dp787")
