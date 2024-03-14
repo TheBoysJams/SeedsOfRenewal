@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxwm4gvg0ka38"]
+
+[ext_resource type="Script" path="res://Towers/projectile.gd" id="1_k5cnw"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_vtvuf"]
+radius = 0.2
+height = 0.4
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1qjjt"]
+radius = 0.2
+
+[node name="Area3D" type="Area3D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_k5cnw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_vtvuf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_1qjjt")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

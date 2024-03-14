@@ -8,13 +8,14 @@ var speed := 3
 var damage := 1
 
 func _process(delta: float) -> void:
-	progress += delta * speed
-	if progress_ratio == 1.0:
-		CoreReached.emit(damage)
-		queue_free()
+	if health > 0:
+		progress += delta * speed
+		if progress_ratio == 1.0:
+			CoreReached.emit(damage)
+			queue_free()
 
-func TakeDamage(damage:int) -> void:
-	health -= damage
+func TakeDamage(damagedDone:int) -> void:
+	health -= damagedDone
 	if health == 0:
 		EnemyDied.emit(goldValue)
-		queue_free()
+		$Giant2/AnimationPlayer.play("Death")

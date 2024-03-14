@@ -114,6 +114,7 @@ text = "Plant Cost: "
 visible = false
 
 [node name="DefeatMenu" parent="." instance=ExtResource("8_dutr8")]
+visible = false
 
 [node name="EnemyManager" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_qntgy")]
 player = NodePath("../Player")

@@ -1,13 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://bt01d7s2iroc3"]
+[gd_scene load_steps=7 format=3 uid="uid://bt01d7s2iroc3"]
 
 [ext_resource type="PackedScene" uid="uid://3digbyjodxia" path="res://Towers/tower_base.tscn" id="1_cnlhl"]
 [ext_resource type="PackedScene" uid="uid://jvgobq1urynn" path="res://Assets/Meshes/Grass.gltf" id="2_a1h4j"]
+[ext_resource type="Script" path="res://Towers/ranged_tower.gd" id="2_in67r"]
+[ext_resource type="PackedScene" uid="uid://dxwm4gvg0ka38" path="res://Towers/projectile.tscn" id="3_4vfpk"]
 [ext_resource type="PackedScene" uid="uid://nxul2h8o43xx" path="res://Assets/Meshes/Tree_2.gltf" id="3_go6wr"]
+[ext_resource type="PackedScene" uid="uid://b5wr4l38bb78u" path="res://Assets/Meshes/Chicken.gltf" id="5_pkrur"]
 
-[node name="RangedTower" instance=ExtResource("1_cnlhl")]
+[node name="RangedTower" node_paths=PackedStringArray("turret") instance=ExtResource("1_cnlhl")]
+script = ExtResource("2_in67r")
+projectile = ExtResource("3_4vfpk")
+turret = NodePath("Chicken2")
 
 [node name="Grass2" parent="." index="1" instance=ExtResource("2_a1h4j")]
 visible = false
 
 [node name="Tree_22" parent="." index="2" instance=ExtResource("3_go6wr")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.0222578, 0.979091, -0.0122623)
+
+[node name="Chicken2" parent="." index="3" instance=ExtResource("5_pkrur")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 3.48164, 0)
+
+[node name="Skeleton3D" parent="Chicken2/AnimalArmature" index="0"]
+bones/1/rotation = Quaternion(-0.68399, 0.179327, 0.703938, -0.0668718)
+bones/2/rotation = Quaternion(0.707107, 0, 0.707107, 0)
+bones/3/rotation = Quaternion(0, 0, 7.45058e-09, 1)
+
+[node name="Marker3D" type="Marker3D" parent="Chicken2" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.116389, 0.714004, 1.09558)
+
+[editable path="Chicken2"]

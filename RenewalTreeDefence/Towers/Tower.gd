@@ -6,3 +6,4 @@ var damage:int = 1
 
 func Attack()-> void:
 	pass
+

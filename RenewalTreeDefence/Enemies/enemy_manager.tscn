@@ -5,7 +5,7 @@
 [node name="EnemyManager" type="Node3D"]
 script = ExtResource("1_w72g7")
 
-[node name="Spawners" type="Node" parent="."]
+[node name="Spawners" type="Node" parent="." groups=["spawners"]]
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 2.0

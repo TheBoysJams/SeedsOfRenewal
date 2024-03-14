@@ -9,7 +9,7 @@ func BuildTower(towerIndex:int, pos:Vector3) -> void:
 	var newTower = towers[towerIndex].Scene.instantiate()
 	add_child(newTower)
 	newTower.global_position = pos
-	newTower.rotation_degrees = Vector3( 0, randi_range(0,360), 0 )
+	#newTower.rotation_degrees = Vector3( 0, randi_range(0,360), 0 )
 	
 func GetTowersAtPosition(pos:Vector3) -> Array[Node]:
 	var currentTowers = get_children()
