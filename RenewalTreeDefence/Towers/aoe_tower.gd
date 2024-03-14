@@ -11,4 +11,3 @@ func Attack() ->void:
 	var hitEnemies = aoe_area.get_overlapping_areas()
 	for enemy in hitEnemies:
 		enemy.get_parent().TakeDamage(damage)
-

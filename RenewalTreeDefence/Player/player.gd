@@ -7,27 +7,28 @@ class_name Player
 @export var towerManager: TowerManager
 @export var startingGold = 20
 @export var startingHealth = 5
-@onready var defeat_menu: Control = $"../DefeatMenu"
 
+signal HealthChanged(int)
+signal GoldChanged(int)
+signal SelectedTowerChanged(TowerInfo)
+signal Defated()
 
-var health:
+var health:int:
 	set(hp_in):
 		health = hp_in
-		$GUI/VBoxContainer/Health.text = "Health: " + str(health)
+		HealthChanged.emit(health)
 		if(health) == 0:
-			get_tree().paused = true
-			defeat_menu.visible = true
+			Defated.emit()
 
 var selectedTowerIndex:int:
 	set(index_in):
 		selectedTowerIndex = index_in
-		$GUI/VBoxContainer/SelectedPlant.text = "Selected Plant: " + towerManager.towers[selectedTowerIndex].Name
-		$GUI/VBoxContainer/SelectedPlantCost.text = "Plant Cost: " + str(towerManager.towers[selectedTowerIndex].Cost)
+		SelectedTowerChanged.emit(towerManager.towers[selectedTowerIndex])
 
-var gold: int:
+var gold:int:
 	set(gold_in):
 		gold = max(gold_in,0)
-		$GUI/VBoxContainer/Gold.text = "Gold: " + str(gold)
+		GoldChanged.emit(gold)
 
 enum TileType {
 	Dirt = 0,
@@ -39,7 +40,6 @@ func _ready() -> void:
 	health = startingHealth
 	gold = startingGold
 	selectedTowerIndex = 0
-
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	#Temp ui code for debugging
@@ -75,8 +75,6 @@ func _process(_delta: float) -> void:
 				SetCellState(cell,TileType.Leaves)
 	else: Input.set_default_cursor_shape(Input.CURSOR_FORBIDDEN)
 
-
-
 func GetCellAtPosition(pos:Vector3) -> Vector3i:
 	return gridmap.local_to_map(pos)
 	
@@ -84,4 +82,4 @@ func GetCellLocalPosition(pos:Vector3i) -> Vector3:
 	return gridmap.map_to_local(pos)
 
 func SetCellState(cell:Vector3i,state:TileType) -> void:
-	gridmap.set_cell_item(cell,state) 
+	gridmap.set_cell_item(cell,state)

@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvr4hmefx6ew8"]
+
+[ext_resource type="Script" path="res://UI/gui.gd" id="1_727jx"]
+
+[node name="GUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 2
+size_flags_vertical = 6
+mouse_filter = 2
+script = ExtResource("1_727jx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -50.0
+offset_right = 118.0
+grow_vertical = 0
+
+[node name="Gold" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Gold : 000"
+
+[node name="Health" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Health : 0"
+
+[node name="SelectedPlant" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Selected Plant: "
+
+[node name="SelectedPlantCost" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Plant Cost: "

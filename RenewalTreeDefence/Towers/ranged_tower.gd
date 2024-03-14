@@ -23,7 +23,6 @@ func _physics_process(delta: float) -> void:
 	if target && turret:
 		turret.look_at(target.global_position,Vector3.UP,true)
 
-
 func GetClosestTarget() -> PathFollow3D:
 	var closestTarget = null
 	var closestTargetDist = turretRange
