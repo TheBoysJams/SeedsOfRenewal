@@ -1,10 +1,14 @@
-extends Camera3D
+extends Node3D
 class_name Player 
 
-@onready var ray_cast_3d: RayCast3D = $RayCast3D
+@onready var ray_cast_3d: RayCast3D = $Camera/RayCast3D
+@onready var camera: Camera3D = $Camera
+
+@export var cameraDistance:= 10.0
 
 @export var gridmap: GridMap
 @export var towerManager: TowerManager
+@export var goldToWin:= 20
 @export var startingGold = 10
 @export var startingHealth = 5
 
@@ -13,6 +17,7 @@ signal GoldChanged(int)
 signal SelectedTowerChanged(TowerInfo)
 signal Defated()
 signal Victory()
+signal OnLoaded(String)
 
 var health:int:
 	set(hp_in):
@@ -30,6 +35,8 @@ var gold:int:
 	set(gold_in):
 		gold = max(gold_in,0)
 		GoldChanged.emit(gold)
+		if gold >= goldToWin:
+			Victory.emit()
 
 enum TileType {
 	Dirt = 0,
@@ -39,9 +46,11 @@ enum TileType {
 }
 
 func _ready() -> void:
+	camera.position.z = cameraDistance
 	health = startingHealth
 	gold = startingGold
 	selectedTowerIndex = 0
+	OnLoaded.emit("Have " + str(goldToWin) + " gold to beat the level.")
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	#Temp ui code for debugging
@@ -49,6 +58,10 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		selectedTowerIndex = 0
 	if Input.is_key_pressed(KEY_2):
 		selectedTowerIndex = 1
+	if Input.is_key_pressed(KEY_D):
+		rotation_degrees.y += 5
+	if Input.is_key_pressed(KEY_A):
+		rotation_degrees.y -= 5
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -56,7 +69,7 @@ func _process(_delta: float) -> void:
 		print("No towers in the towerManager")
 		return
 	var mouse_pos : Vector2 = get_viewport().get_mouse_position()
-	ray_cast_3d.target_position = project_local_ray_normal(mouse_pos) * 100
+	ray_cast_3d.target_position = camera.project_local_ray_normal(mouse_pos) * 1000
 	ray_cast_3d.force_raycast_update()
 	if !ray_cast_3d.is_colliding():
 		Input.set_default_cursor_shape(Input.CURSOR_ARROW)

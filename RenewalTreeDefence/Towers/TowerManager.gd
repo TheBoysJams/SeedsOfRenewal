@@ -2,7 +2,7 @@ extends Node3D
 class_name TowerManager
 
 @export var towers: Array[TowerInfo] = []
-@onready var player = get_parent() as Player
+@export var player:Player
 	
 func BuildTower(towerIndex:int, pos:Vector3) -> void:
 	RemoveTowerAtPosition(pos)

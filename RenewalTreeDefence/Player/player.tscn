@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_kxew8"]
 
-[node name="Player" type="Camera3D"]
-fov = 80.0
+[node name="Player" type="Node3D"]
 script = ExtResource("1_kxew8")
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
+[node name="Camera" type="Camera3D" parent="."]
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera"]
 debug_shape_custom_color = Color(1, 0, 0, 1)
