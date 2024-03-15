@@ -1,13 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://bivvk3fq6tihm"]
+[gd_scene load_steps=18 format=3 uid="uid://bivvk3fq6tihm"]
 
 [ext_resource type="Script" path="res://Levels/level_one.gd" id="1_me13b"]
 [ext_resource type="MeshLibrary" uid="uid://dej0ouyeati5k" path="res://Tiles/tiles.tres" id="1_ptqvd"]
 [ext_resource type="PackedScene" uid="uid://gp5xd5by5ert" path="res://Towers/core.tscn" id="2_f2ge7"]
 [ext_resource type="PackedScene" uid="uid://bq4slw2comdvs" path="res://Player/player.tscn" id="3_gepk4"]
 [ext_resource type="PackedScene" uid="uid://d3g2gcq604vvv" path="res://Towers/tower_manager.tscn" id="4_j41b7"]
-[ext_resource type="PackedScene" uid="uid://nuipramw4dbp" path="res://Towers/aoe_tower.tscn" id="5_g5afb"]
-[ext_resource type="Script" path="res://Towers/TowerInfo.gd" id="6_f17u6"]
-[ext_resource type="PackedScene" uid="uid://bt01d7s2iroc3" path="res://Towers/ranged_tower.tscn" id="7_qtsox"]
 [ext_resource type="PackedScene" uid="uid://tiarduwboie7" path="res://Enemies/enemy_manager.tscn" id="8_l3p1p"]
 [ext_resource type="PackedScene" uid="uid://c4xnjtuw2fxux" path="res://Enemies/enemy.tscn" id="9_1s8la"]
 [ext_resource type="PackedScene" uid="uid://d2knbdbf1tcu3" path="res://Enemies/spawner.tscn" id="10_m0ir6"]
@@ -29,22 +26,6 @@ background_mode = 2
 sky = SubResource("Sky_rdv7s")
 tonemap_mode = 2
 glow_enabled = true
-
-[sub_resource type="Resource" id="Resource_s4chc"]
-script = ExtResource("6_f17u6")
-Scene = ExtResource("5_g5afb")
-Cost = 2
-TileType = 0
-BuiltTileType = 2
-Name = "Mushroom"
-
-[sub_resource type="Resource" id="Resource_jq2sj"]
-script = ExtResource("6_f17u6")
-Scene = ExtResource("7_qtsox")
-Cost = 4
-TileType = 1
-BuiltTileType = 3
-Name = "Tree"
 
 [sub_resource type="Curve3D" id="Curve3D_gw3rc"]
 _data = {
@@ -82,7 +63,6 @@ towerManager = NodePath("TowerManager")
 
 [node name="TowerManager" parent="Player" instance=ExtResource("4_j41b7")]
 transform = Transform3D(-2.98405e-08, -7.39423e-09, -1, -0.882447, 0.470411, 2.28543e-08, 0.470411, 0.882447, -2.05623e-08, 4.59178, -0.751675, -17.1761)
-towers = Array[ExtResource("6_f17u6")]([SubResource("Resource_s4chc"), SubResource("Resource_jq2sj")])
 
 [node name="EnemyManager" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_l3p1p")]
 player = NodePath("../Player")

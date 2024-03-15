@@ -1,6 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3g2gcq604vvv"]
+[gd_scene load_steps=7 format=3 uid="uid://d3g2gcq604vvv"]
 
 [ext_resource type="Script" path="res://Towers/TowerManager.gd" id="1_v5284"]
+[ext_resource type="PackedScene" uid="uid://nuipramw4dbp" path="res://Towers/aoe_tower.tscn" id="2_qm5hx"]
+[ext_resource type="Script" path="res://Towers/TowerInfo.gd" id="3_y04ec"]
+[ext_resource type="PackedScene" uid="uid://bt01d7s2iroc3" path="res://Towers/ranged_tower.tscn" id="4_8bsj0"]
+
+[sub_resource type="Resource" id="Resource_4wrs6"]
+script = ExtResource("3_y04ec")
+Scene = ExtResource("2_qm5hx")
+Cost = 2
+TileType = 0
+BuiltTileType = 2
+Name = "Mushroom"
+
+[sub_resource type="Resource" id="Resource_vd617"]
+script = ExtResource("3_y04ec")
+Scene = ExtResource("4_8bsj0")
+Cost = 4
+TileType = 1
+BuiltTileType = 3
+Name = "ChickenTree"
 
 [node name="TowerManager" type="Node3D"]
 script = ExtResource("1_v5284")
+towers = Array[ExtResource("3_y04ec")]([SubResource("Resource_4wrs6"), SubResource("Resource_vd617")])
