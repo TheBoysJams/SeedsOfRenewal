@@ -34,7 +34,8 @@ var gold:int:
 enum TileType {
 	Dirt = 0,
 	Grass = 1,
-	Leaves = 2
+	Leaves = 2,
+	GrassUsed = 3
 }
 
 func _ready() -> void:
@@ -73,7 +74,7 @@ func _process(_delta: float) -> void:
 			if gold >= selectedTower.Cost:
 				towerManager.BuildTower(selectedTowerIndex,GetCellLocalPosition(cell))
 				gold -= selectedTower.Cost
-				SetCellState(cell,TileType.Leaves)
+				SetCellState(cell,selectedTower.BuiltTileType)
 	else: Input.set_default_cursor_shape(Input.CURSOR_FORBIDDEN)
 
 func GetCellAtPosition(pos:Vector3) -> Vector3i:

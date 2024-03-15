@@ -35,13 +35,15 @@ script = ExtResource("6_f17u6")
 Scene = ExtResource("5_g5afb")
 Cost = 2
 TileType = 0
+BuiltTileType = 2
 Name = "Mushroom"
 
-[sub_resource type="Resource" id="Resource_64dhp"]
+[sub_resource type="Resource" id="Resource_jq2sj"]
 script = ExtResource("6_f17u6")
 Scene = ExtResource("7_qtsox")
 Cost = 4
 TileType = 1
+BuiltTileType = 3
 Name = "Tree"
 
 [sub_resource type="Curve3D" id="Curve3D_gw3rc"]
@@ -80,7 +82,7 @@ towerManager = NodePath("TowerManager")
 
 [node name="TowerManager" parent="Player" instance=ExtResource("4_j41b7")]
 transform = Transform3D(-2.98405e-08, -7.39423e-09, -1, -0.882447, 0.470411, 2.28543e-08, 0.470411, 0.882447, -2.05623e-08, 4.59178, -0.751675, -17.1761)
-towers = Array[ExtResource("6_f17u6")]([SubResource("Resource_s4chc"), SubResource("Resource_64dhp")])
+towers = Array[ExtResource("6_f17u6")]([SubResource("Resource_s4chc"), SubResource("Resource_jq2sj")])
 
 [node name="EnemyManager" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_l3p1p")]
 player = NodePath("../Player")
