@@ -1,7 +1,8 @@
 extends Path3D
 
-func Spawn(enemy:PackedScene) -> void:
+func Spawn(enemy:PackedScene, hpScale:float) -> void:
 	var newEnemy = enemy.instantiate()
+	newEnemy.health *= hpScale
 	newEnemy.connect("CoreReached", DamageCore)
 	newEnemy.connect("EnemyDied", EnemyKilled)
 	add_child(newEnemy)
