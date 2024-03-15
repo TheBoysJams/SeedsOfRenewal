@@ -9,3 +9,6 @@ func OnGoldChanged(gold:int) -> void:
 func OnSelectedTowerChanged(towerInfo:TowerInfo) -> void:
 	$VBoxContainer/SelectedPlant.text = "Selected Plant: " + towerInfo.Name
 	$VBoxContainer/SelectedPlantCost.text = "Plant Cost: " + str(towerInfo.Cost)
+
+func OnVictoryConditionChanged(victoryCondition:String)-> void:
+	$VBoxContainer/LevelVictoryCondition.text = victoryCondition

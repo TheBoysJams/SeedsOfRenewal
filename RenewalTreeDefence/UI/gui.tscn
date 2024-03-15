@@ -38,3 +38,7 @@ text = "Selected Plant: "
 [node name="SelectedPlantCost" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Plant Cost: "
+
+[node name="LevelVictoryCondition" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Plant Cost: "

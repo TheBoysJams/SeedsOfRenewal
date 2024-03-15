@@ -1,0 +1,123 @@
+[gd_scene load_steps=23 format=3 uid="uid://hgg733g4j8r7"]
+
+[ext_resource type="Script" path="res://Levels/level_two.gd" id="1_2k4pm"]
+[ext_resource type="MeshLibrary" uid="uid://dej0ouyeati5k" path="res://Tiles/tiles.tres" id="2_p8iqw"]
+[ext_resource type="PackedScene" uid="uid://gp5xd5by5ert" path="res://Towers/core.tscn" id="3_61lrd"]
+[ext_resource type="PackedScene" uid="uid://bq4slw2comdvs" path="res://Player/player.tscn" id="4_y05ux"]
+[ext_resource type="PackedScene" uid="uid://d3g2gcq604vvv" path="res://Towers/tower_manager.tscn" id="5_40q37"]
+[ext_resource type="PackedScene" uid="uid://nuipramw4dbp" path="res://Towers/aoe_tower.tscn" id="6_rxi8t"]
+[ext_resource type="Script" path="res://Towers/TowerInfo.gd" id="7_su3g4"]
+[ext_resource type="PackedScene" uid="uid://bt01d7s2iroc3" path="res://Towers/ranged_tower.tscn" id="8_7bmsq"]
+[ext_resource type="PackedScene" uid="uid://tiarduwboie7" path="res://Enemies/enemy_manager.tscn" id="9_41v0q"]
+[ext_resource type="PackedScene" uid="uid://c4xnjtuw2fxux" path="res://Enemies/enemy.tscn" id="10_qyjc8"]
+[ext_resource type="PackedScene" uid="uid://d2knbdbf1tcu3" path="res://Enemies/spawner.tscn" id="11_1rpmc"]
+[ext_resource type="PackedScene" uid="uid://cm4gkchemv2ui" path="res://UI/pause_menu.tscn" id="12_y4vkg"]
+[ext_resource type="PackedScene" uid="uid://cgmgbg17x5sjp" path="res://UI/defeat_menu.tscn" id="13_gkcsw"]
+[ext_resource type="PackedScene" uid="uid://bvr4hmefx6ew8" path="res://UI/gui.tscn" id="14_pvdqh"]
+[ext_resource type="PackedScene" uid="uid://bs6uvbvjvidwc" path="res://UI/victory_menu.tscn" id="15_q4353"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m6v85"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_rdv7s"]
+sky_material = SubResource("ProceduralSkyMaterial_m6v85")
+
+[sub_resource type="Environment" id="Environment_hb7km"]
+background_mode = 2
+sky = SubResource("Sky_rdv7s")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="Resource" id="Resource_s4chc"]
+script = ExtResource("7_su3g4")
+Scene = ExtResource("6_rxi8t")
+Cost = 2
+TileType = 0
+Name = "Mushroom"
+
+[sub_resource type="Resource" id="Resource_64dhp"]
+script = ExtResource("7_su3g4")
+Scene = ExtResource("8_7bmsq")
+Cost = 4
+TileType = 1
+Name = "Tree"
+
+[sub_resource type="Curve3D" id="Curve3D_gw3rc"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.00208473, 4.52995e-06, 0.104913, 0, 0, 0, 0, 0, 0, -15.966, 4.52995e-06, 0.164258, 0, 0, 0, 0, 0, 0, -16.2627, 4.52995e-06, 18.2646, 0, 0, 0, 0, 0, 0, -11.9899, 4.52995e-06, 18.2053),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_igiec"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.120775, 4.52995e-06, -0.0137787, 0, 0, 0, 0, 0, 0, -0.00208473, 4.52995e-06, 4.31844, 0, 0, 0, 0, 0, 0, -4.15627, 4.52995e-06, 4.08106, 0, 0, 0, 0, 0, 0, -4.27496, 4.52995e-06, 0.0455666, 0, 0, 0, 0, 0, 0, -11.8712, 4.52995e-06, 0.0455666, 0, 0, 0, 0, 0, 0, -12.1086, 4.52995e-06, 14.1104),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[node name="LevelTwo" type="Node3D"]
+script = ExtResource("1_2k4pm")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hb7km")
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("2_p8iqw")
+cell_octant_size = 1
+data = {
+"cells": PackedInt32Array(2, 65528, 0, 2, 65529, 1, 2, 65530, 0, 1, 65530, 0, 0, 65530, 0, 65535, 65530, 0, 65534, 65530, 0, 65534, 65531, 0, 65534, 65533, 0, 65534, 65534, 0, 65534, 65535, 0, 65534, 0, 0, 65534, 1, 2, 65534, 65532, 0, 65533, 65527, 1, 65534, 65527, 1, 65535, 65527, 1, 0, 65527, 1, 1, 65527, 1, 1, 65528, 0, 1, 65529, 1, 0, 65529, 1, 65535, 65529, 1, 65534, 65529, 1, 65533, 65529, 1, 65533, 65530, 1, 65533, 65531, 1, 65533, 65532, 1, 65533, 65533, 1, 65533, 65534, 1, 65533, 65535, 1, 65533, 0, 1, 65533, 1, 0, 65535, 1, 1, 65535, 0, 1, 65535, 65535, 1, 65535, 65534, 1, 65535, 65533, 1, 65535, 65532, 1, 65535, 65531, 1, 0, 65531, 1, 1, 65531, 1, 2, 65531, 0, 0, 65528, 0, 65535, 65528, 0, 65534, 65528, 0, 65533, 65528, 0, 2, 65527, 1, 3, 65527, 1, 3, 65528, 0, 3, 65529, 1, 3, 65530, 1, 3, 65531, 1, 65532, 1, 0, 65532, 0, 0, 65532, 65535, 0, 65532, 65534, 0, 65532, 65533, 0, 65532, 65532, 0, 65532, 65531, 0, 65532, 65530, 0, 65532, 65529, 0, 65532, 65528, 0, 65532, 65527, 1, 65531, 1, 1, 65531, 0, 1, 65531, 65535, 1, 65531, 65534, 1, 65531, 65533, 1, 65531, 65532, 1, 65531, 65531, 1, 65531, 65530, 1, 65531, 65529, 1, 65531, 65527, 1, 65531, 65528, 1, 2, 65532, 0, 3, 65532, 0, 4, 65532, 0, 4, 65531, 0, 4, 65530, 0, 4, 65528, 0)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Core" parent="." instance=ExtResource("3_61lrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1.50215, 3)
+
+[node name="Player" parent="." node_paths=PackedStringArray("gridmap", "towerManager") instance=ExtResource("4_y05ux")]
+transform = Transform3D(-2.98405e-08, -0.882447, 0.470411, -7.39423e-09, 0.470411, 0.882447, -1, 2.28543e-08, -2.05623e-08, 6.5342, 9.67976, -10.4582)
+fov = 95.0
+gridmap = NodePath("../GridMap")
+towerManager = NodePath("TowerManager")
+
+[node name="TowerManager" parent="Player" instance=ExtResource("5_40q37")]
+transform = Transform3D(-2.98405e-08, -7.39423e-09, -1, -0.882447, 0.470411, 2.28543e-08, 0.470411, 0.882447, -2.05623e-08, 4.59178, -0.751675, -17.1761)
+towers = Array[ExtResource("7_su3g4")]([SubResource("Resource_s4chc"), SubResource("Resource_64dhp")])
+
+[node name="EnemyManager" parent="." node_paths=PackedStringArray("player") instance=ExtResource("9_41v0q")]
+player = NodePath("../Player")
+enemy = ExtResource("10_qyjc8")
+
+[node name="Spawner" parent="EnemyManager/Spawners" index="0" instance=ExtResource("11_1rpmc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.99292, 2.03247, -15.238)
+curve = SubResource("Curve3D_gw3rc")
+
+[node name="Spawner2" parent="EnemyManager/Spawners" index="1" instance=ExtResource("11_1rpmc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.05227, 2.03247, -11.0838)
+curve = SubResource("Curve3D_igiec")
+
+[node name="PauseMenu" parent="." instance=ExtResource("12_y4vkg")]
+visible = false
+
+[node name="DefeatMenu" parent="." instance=ExtResource("13_gkcsw")]
+visible = false
+
+[node name="GUI" parent="." instance=ExtResource("14_pvdqh")]
+
+[node name="VictoryMenu" parent="." instance=ExtResource("15_q4353")]
+
+[connection signal="OnLoaded" from="." to="GUI" method="OnVictoryConditionChanged"]
+[connection signal="Defated" from="Player" to="DefeatMenu" method="OnDefeated"]
+[connection signal="GoldChanged" from="Player" to="." method="_on_player_gold_changed"]
+[connection signal="GoldChanged" from="Player" to="GUI" method="OnGoldChanged"]
+[connection signal="HealthChanged" from="Player" to="GUI" method="OnHealthChanged"]
+[connection signal="SelectedTowerChanged" from="Player" to="GUI" method="OnSelectedTowerChanged"]
+[connection signal="Victory" from="Player" to="VictoryMenu" method="OnVictory"]
+
+[editable path="EnemyManager"]
+[editable path="EnemyManager/Spawners/Spawner"]
+[editable path="EnemyManager/Spawners/Spawner2"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://UI/MainMenu.gd" id="1_68kyx"]
 [ext_resource type="Script" path="res://UI/VolumeSlider.gd" id="2_i0hd0"]
-[ext_resource type="PackedScene" uid="uid://bivvk3fq6tihm" path="res://Levels/prototype_level.tscn" id="2_ndo85"]
+[ext_resource type="PackedScene" uid="uid://bivvk3fq6tihm" path="res://Levels/level_one.tscn" id="2_ndo85"]
 [ext_resource type="Texture2D" uid="uid://cdv5po6dwdsmj" path="res://Assets/Images/Forest.jpg" id="3_bwmo5"]
 
 [node name="MainMenu" type="MarginContainer"]

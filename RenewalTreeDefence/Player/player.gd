@@ -5,13 +5,14 @@ class_name Player
 
 @export var gridmap: GridMap
 @export var towerManager: TowerManager
-@export var startingGold = 20
+@export var startingGold = 10
 @export var startingHealth = 5
 
 signal HealthChanged(int)
 signal GoldChanged(int)
 signal SelectedTowerChanged(TowerInfo)
 signal Defated()
+signal Victory()
 
 var health:int:
 	set(hp_in):
