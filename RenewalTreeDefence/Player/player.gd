@@ -73,7 +73,6 @@ func _unhandled_key_input(event: InputEvent) -> void:
 func UpdateCameraZoom()-> void:
 	cameraDistance = clampf(cameraDistance,5,60)
 	camera.position.z = cameraDistance
-	print(cameraDistance,rotation_degrees)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
