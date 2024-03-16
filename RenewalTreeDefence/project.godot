@@ -31,6 +31,10 @@ project/assembly_name="RenewalTreeDefence"
 
 import/fbx/enabled=false
 
+[gui]
+
+theme/custom="res://UI/theme.tres"
+
 [input]
 
 left_click={
