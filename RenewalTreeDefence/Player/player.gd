@@ -46,7 +46,7 @@ enum TileType {
 }
 
 func _ready() -> void:
-	camera.position.z = cameraDistance
+	UpdateCameraZoom()
 	health = startingHealth
 	gold = startingGold
 	selectedTowerIndex = 0
@@ -58,10 +58,19 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		selectedTowerIndex = 0
 	if Input.is_key_pressed(KEY_2):
 		selectedTowerIndex = 1
-	if Input.is_key_pressed(KEY_D):
+	if Input.is_action_pressed("RotateRight"):
 		rotation_degrees.y += 5
-	if Input.is_key_pressed(KEY_A):
+	if Input.is_action_pressed("RotateLeft"):
 		rotation_degrees.y -= 5
+	if Input.is_action_pressed("ZoomIn"):
+		cameraDistance -= 2
+		UpdateCameraZoom()
+	if Input.is_action_pressed("ZoomOut"):
+		cameraDistance += 2
+		UpdateCameraZoom()
+
+func UpdateCameraZoom()-> void:
+	camera.position.z = cameraDistance
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
