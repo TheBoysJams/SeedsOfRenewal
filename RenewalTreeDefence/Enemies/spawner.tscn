@@ -12,3 +12,9 @@ point_count = 5
 [node name="Path3D" type="Path3D"]
 curve = SubResource("Curve3D_1emvi")
 script = ExtResource("1_h4crg")
+
+[node name="CoreDamagedSFX" type="AudioStreamPlayer" parent="."]
+bus = &"sfx"
+
+[node name="EnemyKilledSFX" type="AudioStreamPlayer" parent="."]
+bus = &"sfx"

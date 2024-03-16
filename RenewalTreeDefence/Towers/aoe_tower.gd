@@ -3,6 +3,7 @@ class_name AOETower extends Tower
 @onready var aoe_area: Area3D = $AOEArea
 
 func _ready() -> void:
+	super()
 	#this just gives it a bit of randomness, might also do a tiny bit of scaling and maybe even the color
 	$Mushroom2.rotation_degrees = Vector3( 0, randi_range(0,360), 0 )
 	$Mushroom3.rotation_degrees = Vector3( 0, randi_range(0,360), 0 )

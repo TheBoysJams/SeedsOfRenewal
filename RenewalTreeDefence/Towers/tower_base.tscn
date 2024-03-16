@@ -8,4 +8,7 @@ script = ExtResource("1_yj507")
 [node name="AttackTimer" type="Timer" parent="."]
 autostart = true
 
+[node name="TowerSpawnSFX" type="AudioStreamPlayer" parent="."]
+bus = &"sfx"
+
 [connection signal="timeout" from="AttackTimer" to="." method="Attack"]
