@@ -10,5 +10,7 @@ func _ready() -> void:
 
 func Attack() ->void:
 	var hitEnemies = aoe_area.get_overlapping_areas()
+	if hitEnemies.size() > 0:
+		$AnimationPlayer.play("Attack")
 	for enemy in hitEnemies:
 		enemy.get_parent().TakeDamage(damage)

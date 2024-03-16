@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://nuipramw4dbp"]
+[gd_scene load_steps=8 format=3 uid="uid://nuipramw4dbp"]
 
 [ext_resource type="PackedScene" uid="uid://3digbyjodxia" path="res://Towers/tower_base.tscn" id="1_swv4t"]
 [ext_resource type="Script" path="res://Towers/aoe_tower.gd" id="2_esod3"]
@@ -8,14 +8,47 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_dp787"]
 radius = 1.0
 
+[sub_resource type="Animation" id="Animation_xko0l"]
+resource_name = "Attack"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mushroom2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.5, 0.5, 0.5), Vector3(0.6, 0.6, 0.6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mushroom3:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.5, 0.5, 0.5), Vector3(0.6, 0.6, 0.6)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b8mqh"]
+_data = {
+"Attack": SubResource("Animation_xko0l")
+}
+
 [node name="AOETower" instance=ExtResource("1_swv4t")]
 script = ExtResource("2_esod3")
 
 [node name="Mushroom2" parent="." index="1" instance=ExtResource("3_37pim")]
-transform = Transform3D(0.46689, 0, -0.178923, 0, 0.5, 0, 0.178923, 0, 0.46689, -0.259203, 0.999286, 0.296287)
+transform = Transform3D(0.560268, 0, -0.214708, 0, 0.6, 0, 0.214708, 0, 0.560268, -0.259203, 0.999286, 0.296287)
 
 [node name="Mushroom3" parent="." index="2" instance=ExtResource("3_37pim")]
-transform = Transform3D(0.474339, 0, 0.158123, 0, 0.5, 0, -0.158123, 0, 0.474339, 0.30088, 0.999286, -0.341881)
+transform = Transform3D(0.569206, 0, 0.189747, 0, 0.6, 0, -0.189747, 0, 0.569206, 0.30088, 0.999286, -0.341881)
 
 [node name="Grass2" parent="." index="3" instance=ExtResource("4_qx20c")]
 visible = false
@@ -27,3 +60,8 @@ collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AOEArea" index="0"]
 shape = SubResource("SphereShape3D_dp787")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+libraries = {
+"": SubResource("AnimationLibrary_b8mqh")
+}
