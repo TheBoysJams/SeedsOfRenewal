@@ -12,6 +12,9 @@ script = ExtResource("2_in67r")
 projectile = ExtResource("3_4vfpk")
 turret = NodePath("Chicken2")
 
+[node name="AttackTimer" parent="." index="0"]
+wait_time = 0.8
+
 [node name="Grass2" parent="." index="1" instance=ExtResource("2_a1h4j")]
 visible = false
 

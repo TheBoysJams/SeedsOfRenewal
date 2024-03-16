@@ -44,11 +44,14 @@ _data = {
 [node name="AOETower" instance=ExtResource("1_swv4t")]
 script = ExtResource("2_esod3")
 
+[node name="AttackTimer" parent="." index="0"]
+wait_time = 1.2
+
 [node name="Mushroom2" parent="." index="1" instance=ExtResource("3_37pim")]
-transform = Transform3D(0.560268, 0, -0.214708, 0, 0.6, 0, 0.214708, 0, 0.560268, -0.259203, 0.999286, 0.296287)
+transform = Transform3D(0.46689, 0, -0.178923, 0, 0.5, 0, 0.178923, 0, 0.46689, -0.259203, 0.999286, 0.296287)
 
 [node name="Mushroom3" parent="." index="2" instance=ExtResource("3_37pim")]
-transform = Transform3D(0.569206, 0, 0.189747, 0, 0.6, 0, -0.189747, 0, 0.569206, 0.30088, 0.999286, -0.341881)
+transform = Transform3D(0.474339, 0, 0.158123, 0, 0.5, 0, -0.158123, 0, 0.474339, 0.30088, 0.999286, -0.341881)
 
 [node name="Grass2" parent="." index="3" instance=ExtResource("4_qx20c")]
 visible = false
