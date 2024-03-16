@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2knbdbf1tcu3"]
+[gd_scene load_steps=5 format=3 uid="uid://d2knbdbf1tcu3"]
 
 [ext_resource type="Script" path="res://Enemies/spawner.gd" id="1_h4crg"]
+[ext_resource type="AudioStream" uid="uid://bbbc8pwnxwjh3" path="res://Assets/Sounds/TINK.wav" id="2_j6q8n"]
+[ext_resource type="AudioStream" uid="uid://bhesihgre1ngy" path="res://Assets/Sounds/DEATH.wav" id="3_gra03"]
 
 [sub_resource type="Curve3D" id="Curve3D_1emvi"]
 _data = {
@@ -14,7 +16,10 @@ curve = SubResource("Curve3D_1emvi")
 script = ExtResource("1_h4crg")
 
 [node name="CoreDamagedSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_j6q8n")
 bus = &"sfx"
 
 [node name="EnemyKilledSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_gra03")
+volume_db = -8.0
 bus = &"sfx"
