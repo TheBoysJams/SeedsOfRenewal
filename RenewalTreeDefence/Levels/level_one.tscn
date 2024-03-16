@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bivvk3fq6tihm"]
+[gd_scene load_steps=17 format=3 uid="uid://bivvk3fq6tihm"]
 
 [ext_resource type="MeshLibrary" uid="uid://dej0ouyeati5k" path="res://Tiles/tiles.tres" id="1_ptqvd"]
 [ext_resource type="PackedScene" uid="uid://gp5xd5by5ert" path="res://Towers/core.tscn" id="2_f2ge7"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cgmgbg17x5sjp" path="res://UI/defeat_menu.tscn" id="12_pnxmh"]
 [ext_resource type="PackedScene" uid="uid://bvr4hmefx6ew8" path="res://UI/gui.tscn" id="13_peahu"]
 [ext_resource type="PackedScene" uid="uid://bs6uvbvjvidwc" path="res://UI/victory_menu.tscn" id="14_n8ksw"]
+[ext_resource type="PackedScene" uid="uid://pl5dcsai7v2t" path="res://Levels/level_two.tscn" id="16_anhib"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m6v85"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -75,6 +76,8 @@ visible = false
 [node name="GUI" parent="." instance=ExtResource("13_peahu")]
 
 [node name="VictoryMenu" parent="." instance=ExtResource("14_n8ksw")]
+visible = false
+nextLevel = ExtResource("16_anhib")
 
 [node name="TowerManager" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_j41b7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -84,6 +87,7 @@ player = NodePath("../Player")
 [connection signal="GoldChanged" from="Player" to="." method="_on_player_gold_changed"]
 [connection signal="GoldChanged" from="Player" to="GUI" method="OnGoldChanged"]
 [connection signal="HealthChanged" from="Player" to="GUI" method="OnHealthChanged"]
+[connection signal="OnLoaded" from="Player" to="GUI" method="OnVictoryConditionChanged"]
 [connection signal="SelectedTowerChanged" from="Player" to="GUI" method="OnSelectedTowerChanged"]
 [connection signal="Victory" from="Player" to="VictoryMenu" method="OnVictory"]
 

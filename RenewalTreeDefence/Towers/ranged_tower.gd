@@ -28,7 +28,7 @@ func GetClosestTarget() -> PathFollow3D:
 	var closestTargetDist = turretRange
 	for spawner in spawners:
 		for enemy in spawner.get_children():
-			if enemy is PathFollow3D:
+			if enemy is PathFollow3D && enemy.health > 0:
 				var dist := global_position.distance_to(enemy.global_position)
 				if dist < closestTargetDist:
 					closestTarget = enemy

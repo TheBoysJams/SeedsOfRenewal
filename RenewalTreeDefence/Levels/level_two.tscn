@@ -1,0 +1,105 @@
+[gd_scene load_steps=17 format=3 uid="uid://pl5dcsai7v2t"]
+
+[ext_resource type="MeshLibrary" uid="uid://dej0ouyeati5k" path="res://Tiles/tiles.tres" id="2_p8iqw"]
+[ext_resource type="PackedScene" uid="uid://gp5xd5by5ert" path="res://Towers/core.tscn" id="3_61lrd"]
+[ext_resource type="PackedScene" uid="uid://bq4slw2comdvs" path="res://Player/player.tscn" id="4_y05ux"]
+[ext_resource type="PackedScene" uid="uid://d3g2gcq604vvv" path="res://Towers/tower_manager.tscn" id="5_40q37"]
+[ext_resource type="PackedScene" uid="uid://tiarduwboie7" path="res://Enemies/enemy_manager.tscn" id="9_41v0q"]
+[ext_resource type="PackedScene" uid="uid://c4xnjtuw2fxux" path="res://Enemies/enemy.tscn" id="10_qyjc8"]
+[ext_resource type="PackedScene" uid="uid://d2knbdbf1tcu3" path="res://Enemies/spawner.tscn" id="11_1rpmc"]
+[ext_resource type="PackedScene" uid="uid://cm4gkchemv2ui" path="res://UI/pause_menu.tscn" id="12_y4vkg"]
+[ext_resource type="PackedScene" uid="uid://cgmgbg17x5sjp" path="res://UI/defeat_menu.tscn" id="13_gkcsw"]
+[ext_resource type="PackedScene" uid="uid://bvr4hmefx6ew8" path="res://UI/gui.tscn" id="14_pvdqh"]
+[ext_resource type="PackedScene" uid="uid://bs6uvbvjvidwc" path="res://UI/victory_menu.tscn" id="15_q4353"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m6v85"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_rdv7s"]
+sky_material = SubResource("ProceduralSkyMaterial_m6v85")
+
+[sub_resource type="Environment" id="Environment_hb7km"]
+background_mode = 2
+sky = SubResource("Sky_rdv7s")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="Curve3D" id="Curve3D_gw3rc"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.14986, 2.81334e-05, 0.270585, 0, 0, 0, 0, 0, 0, 5.52083, 2.81334e-05, 0.139723, 0, 0, 0, 0, 0, 0, 5.43358, 2.81334e-05, 4.24006, 0, 0, 0, 0, 0, 0, 3.51427, 2.81334e-05, 4.28368, 0, 0, 0, 0, 0, 0, 3.47066, 2.81334e-05, 7.9042, 0, 0, 0, 0, 0, 0, 5.56444, 2.81334e-05, 7.99144, 0, 0, 0, 0, 0, 0, 5.43358, 2.81334e-05, 16.0176, 0, 0, 0, 0, 0, 0, 7.48376, 2.81334e-05, 16.1921),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="Curve3D" id="Curve3D_fkvjs"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.0889645, 2.81334e-05, 0.226964, 0, 0, 0, 0, 0, 0, -5.71603, 2.81334e-05, 0.226964, 0, 0, 0, 0, 0, 0, -5.58517, 2.81334e-05, 4.15282, 0, 0, 0, 0, 0, 0, -3.62224, 2.81334e-05, 4.24006, 0, 0, 0, 0, 0, 0, -3.70948, 2.81334e-05, 8.07868, 0, 0, 0, 0, 0, 0, -5.62879, 2.81334e-05, 8.1223, 0, 0, 0, 0, 0, 0, -5.67241, 2.81334e-05, 16.2357, 0, 0, 0, 0, 0, 0, -7.72258, 2.81334e-05, 16.2794),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[node name="LevelTwo" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hb7km")
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("2_p8iqw")
+cell_octant_size = 1
+data = {
+"cells": PackedInt32Array(65534, 65533, 1, 65534, 65534, 1, 65534, 65535, 1, 65534, 0, 1, 65534, 1, 2, 65533, 65533, 0, 65533, 65534, 0, 65533, 65535, 0, 65533, 0, 0, 65533, 1, 0, 65535, 1, 0, 65535, 0, 0, 65535, 65535, 0, 65535, 65534, 0, 65535, 65533, 0, 65534, 65532, 1, 65534, 2, 1, 65533, 2, 1, 65535, 2, 1, 0, 2, 1, 0, 1, 1, 0, 0, 1, 65532, 2, 1, 65532, 1, 1, 65532, 0, 1, 65532, 65535, 1, 65532, 65534, 1, 0, 65535, 1, 0, 65534, 1, 65535, 65532, 1, 65533, 65532, 1, 65531, 65534, 1, 65531, 65533, 1, 65531, 65532, 1, 65531, 65531, 1, 65531, 65530, 1, 1, 65534, 1, 1, 65530, 1, 0, 65530, 1, 65534, 65530, 1, 65534, 65531, 1, 65532, 65530, 1, 1, 65533, 1, 1, 65532, 1, 1, 65531, 1, 65532, 65533, 0, 65532, 65532, 0, 65532, 65531, 0, 65533, 65531, 0, 65533, 65530, 0, 65535, 65530, 0, 65535, 65531, 0, 0, 65531, 0, 0, 65532, 0, 0, 65533, 0, 65535, 65529, 0, 0, 65529, 0, 1, 65529, 0, 65533, 65529, 0, 65532, 65529, 0, 65531, 65529, 0, 65534, 65529, 1, 65534, 65528, 1, 65533, 65528, 1, 65532, 65528, 1, 65531, 65528, 1, 65535, 65528, 1, 0, 65528, 1, 1, 65528, 1)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Core" parent="." instance=ExtResource("3_61lrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, 3)
+
+[node name="Player" parent="." node_paths=PackedStringArray("gridmap", "towerManager") instance=ExtResource("4_y05ux")]
+transform = Transform3D(-4.37114e-08, -0.707107, 0.707107, 0, 0.707107, 0.707107, -1, 3.09086e-08, -3.09086e-08, -2.95261, 2, -6.22212)
+gridmap = NodePath("../GridMap")
+towerManager = NodePath("../TowerManager")
+goldToWin = 40
+startingGold = 20
+
+[node name="EnemyManager" parent="." node_paths=PackedStringArray("player") instance=ExtResource("9_41v0q")]
+player = NodePath("../Player")
+enemy = ExtResource("10_qyjc8")
+
+[node name="Spawner" parent="EnemyManager/Spawners" index="0" instance=ExtResource("11_1rpmc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5154, 2.01047, -13.1823)
+curve = SubResource("Curve3D_gw3rc")
+
+[node name="Spawner2" parent="EnemyManager/Spawners" index="1" instance=ExtResource("11_1rpmc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6037, 2.01047, -13.1823)
+curve = SubResource("Curve3D_fkvjs")
+
+[node name="PauseMenu" parent="." instance=ExtResource("12_y4vkg")]
+visible = false
+
+[node name="DefeatMenu" parent="." instance=ExtResource("13_gkcsw")]
+visible = false
+
+[node name="GUI" parent="." instance=ExtResource("14_pvdqh")]
+
+[node name="VictoryMenu" parent="." instance=ExtResource("15_q4353")]
+visible = false
+
+[node name="TowerManager" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_40q37")]
+player = NodePath("../Player")
+
+[connection signal="Defated" from="Player" to="DefeatMenu" method="OnDefeated"]
+[connection signal="GoldChanged" from="Player" to="." method="_on_player_gold_changed"]
+[connection signal="GoldChanged" from="Player" to="GUI" method="OnGoldChanged"]
+[connection signal="HealthChanged" from="Player" to="GUI" method="OnHealthChanged"]
+[connection signal="OnLoaded" from="Player" to="GUI" method="OnVictoryConditionChanged"]
+[connection signal="SelectedTowerChanged" from="Player" to="GUI" method="OnSelectedTowerChanged"]
+[connection signal="Victory" from="Player" to="VictoryMenu" method="OnVictory"]
+
+[editable path="EnemyManager"]
+[editable path="EnemyManager/Spawners/Spawner"]
+[editable path="EnemyManager/Spawners/Spawner2"]

@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://bq4slw2comdvs"]
 
-[ext_resource type="Script" path="res://Player/player.gd" id="1_kxew8"]
+[ext_resource type="Script" path="res://Player/player.gd" id="1_6rx6a"]
 
 [node name="Player" type="Node3D"]
-script = ExtResource("1_kxew8")
+script = ExtResource("1_6rx6a")
 
 [node name="Camera" type="Camera3D" parent="."]
 
