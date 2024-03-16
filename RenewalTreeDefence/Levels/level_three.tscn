@@ -91,9 +91,6 @@ curve = SubResource("Curve3D_fkvjs")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.08832, 2.01047, -20.6244)
 curve = SubResource("Curve3D_f2vsl")
 
-[node name="SpawnTimer" parent="EnemyManager" index="1"]
-autostart = false
-
 [node name="PauseMenu" parent="." instance=ExtResource("7_slrcp")]
 visible = false
 
