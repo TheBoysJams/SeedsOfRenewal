@@ -1,6 +1,7 @@
-extends PanelContainer
+extends VBoxContainer
 
-@export var plant_texture: Texture2D
+
+@export var plant_index: int
 @export var plant_name: String
 @export var plant_cost: int
 @export var plant_model: PackedScene
@@ -17,6 +18,7 @@ var mesh: MeshInstance3D
 
 
 func _ready():
+	%IndexLabel.text = str(plant_index+1)
 	sub_viewport.set_clear_mode(SubViewport.CLEAR_MODE_ONCE)
 	texture_rect.texture = sub_viewport.get_texture()
 	

@@ -3,39 +3,55 @@
 [ext_resource type="Script" path="res://UI/plant_panel.gd" id="1_c01mv"]
 [ext_resource type="PackedScene" uid="uid://okpjnvjc5ial" path="res://UI/plant_3d_model_GUI.tscn" id="2_6tn7o"]
 
-[node name="PlantPanel" type="PanelContainer"]
+[node name="PlantPanel" type="VBoxContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
 size_flags_horizontal = 0
 size_flags_vertical = 8
+mouse_filter = 0
 theme_type_variation = &"PlantPanel"
 script = ExtResource("1_c01mv")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="IndexLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "1"
+horizontal_alignment = 1
+
+[node name="PlantPanelContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+mouse_filter = 1
+theme_type_variation = &"PlantPanel"
+
+[node name="MarginContainer" type="MarginContainer" parent="PlantPanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PlantPanelContainer/MarginContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="NameLabel" type="Label" parent="PlantPanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Plant Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="PlantPanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="SubViewport" type="SubViewport" parent="MarginContainer/VBoxContainer/TextureRect"]
+[node name="SubViewport" type="SubViewport" parent="PlantPanelContainer/MarginContainer/VBoxContainer/TextureRect"]
 unique_name_in_owner = true
 own_world_3d = true
 transparent_bg = true
@@ -43,10 +59,10 @@ handle_input_locally = false
 size = Vector2i(80, 50)
 render_target_update_mode = 4
 
-[node name="PlantView" parent="MarginContainer/VBoxContainer/TextureRect/SubViewport" instance=ExtResource("2_6tn7o")]
+[node name="PlantView" parent="PlantPanelContainer/MarginContainer/VBoxContainer/TextureRect/SubViewport" instance=ExtResource("2_6tn7o")]
 unique_name_in_owner = true
 
-[node name="CostLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="CostLabel" type="Label" parent="PlantPanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
