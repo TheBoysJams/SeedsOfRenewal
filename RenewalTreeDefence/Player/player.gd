@@ -70,6 +70,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		UpdateCameraZoom()
 
 func UpdateCameraZoom()-> void:
+	cameraDistance = clampf(cameraDistance,5,60)
 	camera.position.z = cameraDistance
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
