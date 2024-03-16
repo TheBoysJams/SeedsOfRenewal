@@ -5,7 +5,7 @@ class_name Player
 @onready var camera: Camera3D = $Camera
 
 @export var cameraDistance:= 10.0
-
+@export var cameraYRot:= 90.0
 @export var gridmap: GridMap
 @export var towerManager: TowerManager
 @export var goldToWin:= 20
@@ -47,6 +47,7 @@ enum TileType {
 
 func _ready() -> void:
 	UpdateCameraZoom()
+	rotation_degrees.y = cameraYRot
 	health = startingHealth
 	gold = startingGold
 	selectedTowerIndex = 0
@@ -72,6 +73,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 func UpdateCameraZoom()-> void:
 	cameraDistance = clampf(cameraDistance,5,60)
 	camera.position.z = cameraDistance
+	print(cameraDistance,rotation_degrees)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

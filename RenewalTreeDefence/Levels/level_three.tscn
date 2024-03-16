@@ -68,6 +68,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, 3)
 
 [node name="Player" parent="." node_paths=PackedStringArray("gridmap", "towerManager") instance=ExtResource("3_h5cr5")]
 transform = Transform3D(-4.37114e-08, -0.707107, 0.707107, 0, 0.707107, 0.707107, -1, 3.09086e-08, -3.09086e-08, -2.95261, 2, -8.03342)
+cameraDistance = 18.0
+cameraYRot = 100.0
 gridmap = NodePath("../GridMap")
 towerManager = NodePath("../TowerManager")
 goldToWin = 60
@@ -88,6 +90,9 @@ curve = SubResource("Curve3D_fkvjs")
 [node name="Spawner3" parent="EnemyManager/Spawners" index="2" instance=ExtResource("6_kue3v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.08832, 2.01047, -20.6244)
 curve = SubResource("Curve3D_f2vsl")
+
+[node name="SpawnTimer" parent="EnemyManager" index="1"]
+autostart = false
 
 [node name="PauseMenu" parent="." instance=ExtResource("7_slrcp")]
 visible = false
