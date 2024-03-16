@@ -17,7 +17,7 @@ signal GoldChanged(int)
 signal SelectedTowerChanged(TowerInfo)
 signal Defated()
 signal Victory()
-signal OnLoaded(String)
+signal OnLoaded(int)
 
 var health:int:
 	set(hp_in):
@@ -51,7 +51,7 @@ func _ready() -> void:
 	health = startingHealth
 	gold = startingGold
 	selectedTowerIndex = 0
-	OnLoaded.emit("Have " + str(goldToWin) + " gold to beat the level.")
+	OnLoaded.emit(goldToWin)
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Plant1"):
