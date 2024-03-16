@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ccfnep85oalfb"]
+[gd_scene load_steps=19 format=3 uid="uid://ccfnep85oalfb"]
 
 [ext_resource type="MeshLibrary" uid="uid://dej0ouyeati5k" path="res://Tiles/tiles.tres" id="1_ff6ci"]
 [ext_resource type="PackedScene" uid="uid://gp5xd5by5ert" path="res://Towers/core.tscn" id="2_rl0kv"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bvr4hmefx6ew8" path="res://UI/gui.tscn" id="9_y0rah"]
 [ext_resource type="PackedScene" uid="uid://bs6uvbvjvidwc" path="res://UI/victory_menu.tscn" id="10_w6p4a"]
 [ext_resource type="PackedScene" uid="uid://d3g2gcq604vvv" path="res://Towers/tower_manager.tscn" id="11_65qal"]
+[ext_resource type="PackedScene" uid="uid://dfyevqo2adalb" path="res://Levels/level_four.tscn" id="11_m2jgn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m6v85"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -101,6 +102,7 @@ visible = false
 
 [node name="VictoryMenu" parent="." instance=ExtResource("10_w6p4a")]
 visible = false
+nextLevel = ExtResource("11_m2jgn")
 
 [node name="TowerManager" parent="." node_paths=PackedStringArray("player") instance=ExtResource("11_65qal")]
 player = NodePath("../Player")
@@ -114,6 +116,3 @@ player = NodePath("../Player")
 [connection signal="Victory" from="Player" to="VictoryMenu" method="OnVictory"]
 
 [editable path="EnemyManager"]
-[editable path="EnemyManager/Spawners/Spawner"]
-[editable path="EnemyManager/Spawners/Spawner2"]
-[editable path="EnemyManager/Spawners/Spawner3"]

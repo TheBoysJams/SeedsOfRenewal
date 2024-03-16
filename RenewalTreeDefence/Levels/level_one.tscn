@@ -92,4 +92,3 @@ player = NodePath("../Player")
 [connection signal="Victory" from="Player" to="VictoryMenu" method="OnVictory"]
 
 [editable path="EnemyManager"]
-[editable path="EnemyManager/Spawners/Spawner"]
