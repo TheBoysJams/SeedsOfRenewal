@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cgmgbg17x5sjp"]
+[gd_scene load_steps=3 format=3 uid="uid://cgmgbg17x5sjp"]
 
 [ext_resource type="Script" path="res://UI/DefeatMenu.gd" id="1_jwrl2"]
+[ext_resource type="PackedScene" uid="uid://3ajgyturdg8s" path="res://UI/sound_button.tscn" id="2_hgctu"]
 
 [node name="DefeatMenu" type="Control"]
 process_mode = 3
@@ -17,23 +18,36 @@ layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 
-[node name="Panel" type="Panel" parent="MarginContainer"]
+[node name="Panel" type="PanelContainer" parent="MarginContainer"]
 self_modulate = Color(1, 1, 1, 0.666667)
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(200, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 18
 alignment = 1
 
-[node name="ResumeButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Defeat"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="VBoxContainer" parent="MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="RetryButton" parent="MarginContainer/Panel/VBoxContainer/MarginContainer" instance=ExtResource("2_hgctu")]
 layout_mode = 2
 text = "Retry"
 
-[node name="ExitToMenuButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="ExitToMenuButton" parent="MarginContainer/Panel/VBoxContainer/MarginContainer" instance=ExtResource("2_hgctu")]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 text = "Exit to Menu"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/ExitToMenuButton" to="." method="_on_exit_to_menu_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/MarginContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/MarginContainer/ExitToMenuButton" to="." method="_on_exit_to_menu_button_pressed"]

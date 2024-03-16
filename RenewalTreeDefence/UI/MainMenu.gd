@@ -1,14 +1,18 @@
-extends MarginContainer
+extends CanvasLayer
 
 @export var levelToLoad: PackedScene
 
-func _on_start_button_pressed() -> void:
-	# Load the level scene as a PackedScene object
-	# Ensure the levelToLoad is not null
-	if levelToLoad:
-		# Change to the loaded scene
-		get_tree().change_scene_to_packed(levelToLoad)
+@onready var play_button: Button = %PlayButton
+@onready var exit_button: Button = %ExitButton
 
-func _on_exit_button_pressed() -> void:
-		# Quit the game
+
+func _ready():
+	play_button.pressed.connect(on_play_pressed)
+	exit_button.pressed.connect(on_exit_pressed)
+
+func on_play_pressed():
+	get_tree().change_scene_to_packed(levelToLoad)
+
+
+func on_exit_pressed():
 	get_tree().quit()

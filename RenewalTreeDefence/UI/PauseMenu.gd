@@ -1,10 +1,10 @@
-extends Control
+extends CanvasLayer
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Connect the buttons to their signals
-	# Initially hide the pause menu
+	# Initially hide thepause menu
 	visible = false
 
 func _unhandled_input(event):

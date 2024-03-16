@@ -3,11 +3,10 @@ extends Control
 @export var nextLevel:PackedScene
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# Connect the buttons to their signals
-	# Initially hide the pause menu
 	visible = false
 	if not nextLevel:
-		$MarginContainer/VBoxContainer/NextLevelButton.visible = false
+		%NextLevelButton.visible = false
+		%VictoryLabel.text = "You win!"
 		
 func _on_nextLevel_button_pressed():
 	get_tree().paused = false

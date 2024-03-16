@@ -1,6 +1,6 @@
 extends HSlider
 
-@export var audio_bus_name = "Music"
+@export var audio_bus_name: String
 var _bus: int
 
 func _ready():

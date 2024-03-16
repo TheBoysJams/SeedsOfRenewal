@@ -6,7 +6,7 @@ func _ready():
 	# Initially hide the pause menu
 	visible = false
 
-func _on_resume_button_pressed():
+func _on_retry_button_pressed():
 	# Resume the game
 	get_tree().paused = false
 	get_tree().reload_current_scene()

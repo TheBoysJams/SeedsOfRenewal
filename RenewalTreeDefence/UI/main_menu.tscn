@@ -1,41 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://cn7rsdy4ic8vu"]
+[gd_scene load_steps=6 format=3 uid="uid://cn7rsdy4ic8vu"]
 
 [ext_resource type="Script" path="res://UI/MainMenu.gd" id="1_68kyx"]
 [ext_resource type="Script" path="res://UI/VolumeSlider.gd" id="2_i0hd0"]
 [ext_resource type="PackedScene" uid="uid://bivvk3fq6tihm" path="res://Levels/level_one.tscn" id="2_ndo85"]
 [ext_resource type="Texture2D" uid="uid://cdv5po6dwdsmj" path="res://Assets/Images/Forest.jpg" id="3_bwmo5"]
+[ext_resource type="PackedScene" uid="uid://3ajgyturdg8s" path="res://UI/sound_button.tscn" id="5_uoy87"]
 
-[node name="MainMenu" type="MarginContainer"]
+[node name="MainMenu" type="CanvasLayer"]
 process_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 script = ExtResource("1_68kyx")
 levelToLoad = ExtResource("2_ndo85")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="StartButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "Start Game"
-
-[node name="ExitButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "Exit"
-
-[node name="VolumeSlider" type="HSlider" parent="VBoxContainer"]
-layout_mode = 2
-max_value = 1.0
-step = 0.05
-value = 1.0
-script = ExtResource("2_i0hd0")
 
 [node name="BGSprite" type="Sprite2D" parent="."]
 z_index = -1
@@ -44,6 +18,87 @@ position = Vector2(576, 324)
 scale = Vector2(1.5, 1.26562)
 texture = ExtResource("3_bwmo5")
 
-[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
-[connection signal="value_changed" from="VBoxContainer/VolumeSlider" to="VBoxContainer/VolumeSlider" method="_on_value_changed"]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Seeds of Renewal"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 8
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "SFX Volume"
+
+[node name="SfxSlider" type="HSlider" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+script = ExtResource("2_i0hd0")
+audio_bus_name = "sfx"
+
+[node name="Label3" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Music Volume"
+
+[node name="MusicSlider" type="HSlider" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+script = ExtResource("2_i0hd0")
+audio_bus_name = "music"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PlayButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" instance=ExtResource("5_uoy87")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Play"
+
+[node name="ExitButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" instance=ExtResource("5_uoy87")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Exit"
+
+[connection signal="value_changed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/SfxSlider" to="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/SfxSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MusicSlider" to="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MusicSlider" method="_on_value_changed"]
