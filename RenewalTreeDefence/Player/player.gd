@@ -28,7 +28,7 @@ var health:int:
 
 var selectedTowerIndex:int:
 	set(index_in):
-		selectedTowerIndex = index_in
+		selectedTowerIndex = wrapi(index_in,0,towerManager.towers.size()) 
 		SelectedTowerChanged.emit(towerManager.towers[selectedTowerIndex])
 
 var gold:int:
@@ -53,11 +53,10 @@ func _ready() -> void:
 	selectedTowerIndex = 0
 	OnLoaded.emit("Have " + str(goldToWin) + " gold to beat the level.")
 
-func _unhandled_key_input(event: InputEvent) -> void:
-	#Temp ui code for debugging
-	if Input.is_key_pressed(KEY_1):
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("Plant1"):
 		selectedTowerIndex = 0
-	if Input.is_key_pressed(KEY_2):
+	if Input.is_action_just_pressed("Plant2"):
 		selectedTowerIndex = 1
 	if Input.is_action_pressed("RotateRight"):
 		rotation_degrees.y += 5
@@ -69,6 +68,10 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	if Input.is_action_pressed("ZoomOut"):
 		cameraDistance += 2
 		UpdateCameraZoom()
+	if Input.is_action_pressed("NextPlant"):
+		selectedTowerIndex += 1
+	if Input.is_action_pressed("PreviousPlant"):
+		selectedTowerIndex -= 1
 
 func UpdateCameraZoom()-> void:
 	cameraDistance = clampf(cameraDistance,5,60)

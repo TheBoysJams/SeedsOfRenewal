@@ -7,6 +7,7 @@ var target: PathFollow3D
 @onready var spawners = get_tree().get_first_node_in_group("spawners").get_children()
 
 func _ready() -> void:
+	super()
 	$Tree_22.rotation_degrees = Vector3( 0, randi_range(0,360), 0 )
 
 func Attack() ->void:
