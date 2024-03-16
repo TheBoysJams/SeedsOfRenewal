@@ -3,18 +3,11 @@
 [ext_resource type="Script" path="res://UI/victory_menu.gd" id="1_pjanx"]
 [ext_resource type="PackedScene" uid="uid://3ajgyturdg8s" path="res://UI/sound_button.tscn" id="2_33r1u"]
 
-[node name="VictoryMenu" type="Control"]
+[node name="VictoryMenu" type="CanvasLayer"]
 process_mode = 3
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 script = ExtResource("1_pjanx")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 

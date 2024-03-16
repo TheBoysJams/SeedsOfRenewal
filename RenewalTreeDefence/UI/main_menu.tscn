@@ -85,16 +85,14 @@ audio_bus_name = "music"
 layout_mode = 2
 
 [node name="PlayButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" instance=ExtResource("5_uoy87")]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(75, 0)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Play"
 
 [node name="ExitButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" instance=ExtResource("5_uoy87")]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(75, 0)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -102,3 +100,5 @@ text = "Exit"
 
 [connection signal="value_changed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/SfxSlider" to="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/SfxSlider" method="_on_value_changed"]
 [connection signal="value_changed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MusicSlider" to="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MusicSlider" method="_on_value_changed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2/PlayButton" to="." method="on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2/ExitButton" to="." method="on_exit_pressed"]

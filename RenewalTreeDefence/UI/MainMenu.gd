@@ -6,10 +6,6 @@ extends CanvasLayer
 @onready var exit_button: Button = %ExitButton
 
 
-func _ready():
-	play_button.pressed.connect(on_play_pressed)
-	exit_button.pressed.connect(on_exit_pressed)
-
 func on_play_pressed():
 	get_tree().change_scene_to_packed(levelToLoad)
 

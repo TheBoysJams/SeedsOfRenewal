@@ -1,18 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2nvuq3jtwjx4"]
+[gd_scene load_steps=4 format=3 uid="uid://c2nvuq3jtwjx4"]
 
+[ext_resource type="Script" path="res://SoundController/SoundController.gd" id="1_nfwhu"]
 [ext_resource type="AudioStream" uid="uid://dun0cf423gvg4" path="res://Assets/Music/SeedsOfRenewal.mp3" id="1_udffp"]
-[ext_resource type="Script" path="res://SoundController/BackgroundMusic.gd" id="2_bl3ui"]
+[ext_resource type="AudioStream" uid="uid://bbb7u8rhdgtp7" path="res://Assets/Sounds/click1.ogg" id="3_dbcyh"]
 
 [node name="SoundController" type="Node"]
+script = ExtResource("1_nfwhu")
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("1_udffp")
-volume_db = -10.0
 autoplay = true
 bus = &"music"
-script = ExtResource("2_bl3ui")
 
 [node name="Timer" type="Timer" parent="BackgroundMusic"]
 wait_time = 15.0
 one_shot = true
+
+[node name="ButtonClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_dbcyh")
+bus = &"sfx"

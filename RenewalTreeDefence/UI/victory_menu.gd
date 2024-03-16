@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 @export var nextLevel:PackedScene
 # Called when the node enters the scene tree for the first time.

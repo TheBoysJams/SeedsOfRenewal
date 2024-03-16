@@ -1,13 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://3ajgyturdg8s"]
+[gd_scene load_steps=2 format=3 uid="uid://3ajgyturdg8s"]
 
 [ext_resource type="Script" path="res://UI/sound_button.gd" id="1_wj558"]
-[ext_resource type="AudioStream" uid="uid://bbb7u8rhdgtp7" path="res://Assets/Sounds/click1.ogg" id="2_1li3v"]
 
 [node name="SoundButton" type="Button"]
 offset_right = 8.0
 offset_bottom = 8.0
 script = ExtResource("1_wj558")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_1li3v")
-bus = &"sfx"

@@ -6,5 +6,5 @@ func _ready():
 
 
 func on_pressed():
-	$AudioStreamPlayer.play()
+	SoundController.play_click()
 
