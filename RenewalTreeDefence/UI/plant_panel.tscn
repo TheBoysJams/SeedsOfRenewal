@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://bak30wl16u34k"]
+
+[ext_resource type="Script" path="res://UI/plant_panel.gd" id="1_c01mv"]
+[ext_resource type="PackedScene" uid="uid://okpjnvjc5ial" path="res://UI/plant_3d_model_GUI.tscn" id="2_6tn7o"]
+
+[node name="PlantPanel" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_type_variation = &"PlantPanel"
+script = ExtResource("1_c01mv")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Plant Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="SubViewport" type="SubViewport" parent="MarginContainer/VBoxContainer/TextureRect"]
+unique_name_in_owner = true
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(80, 50)
+render_target_update_mode = 4
+
+[node name="PlantView" parent="MarginContainer/VBoxContainer/TextureRect/SubViewport" instance=ExtResource("2_6tn7o")]
+unique_name_in_owner = true
+
+[node name="CostLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Plant Cost"
+horizontal_alignment = 1
+vertical_alignment = 1

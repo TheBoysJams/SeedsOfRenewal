@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://okpjnvjc5ial"]
+
+[node name="Plant3DModelGUI" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0546984, 0.665, 2.457)
+fov = 55.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]

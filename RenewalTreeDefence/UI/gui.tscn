@@ -1,44 +1,114 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvr4hmefx6ew8"]
+[gd_scene load_steps=9 format=3 uid="uid://bvr4hmefx6ew8"]
 
 [ext_resource type="Script" path="res://UI/gui.gd" id="1_727jx"]
+[ext_resource type="Texture2D" uid="uid://c45bdcnuk0c5q" path="res://Assets/Images/Heart.png" id="2_t0d42"]
+[ext_resource type="Shader" path="res://UI/heart_gui.gdshader" id="2_u1vsv"]
+[ext_resource type="Texture2D" uid="uid://b6iwf6gtpwn8g" path="res://Assets/Images/Coin.png" id="3_hlvv1"]
+[ext_resource type="PackedScene" uid="uid://bak30wl16u34k" path="res://UI/plant_panel.tscn" id="5_haxeg"]
+[ext_resource type="PackedScene" uid="uid://bdtm8816umdhp" path="res://Assets/Meshes/Mushroom.gltf" id="6_6rx21"]
+[ext_resource type="PackedScene" uid="uid://nxul2h8o43xx" path="res://Assets/Meshes/Tree_2.gltf" id="7_tpmfo"]
 
-[node name="GUI" type="Control"]
-layout_mode = 3
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4mubi"]
+shader = ExtResource("2_u1vsv")
+
+[node name="GUI" type="CanvasLayer"]
+script = ExtResource("1_727jx")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 2
-size_flags_vertical = 6
-mouse_filter = 2
-script = ExtResource("1_727jx")
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -50.0
-offset_right = 118.0
-grow_vertical = 0
-
-[node name="Gold" type="Label" parent="VBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-text = "Gold : 000"
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
-[node name="Health" type="Label" parent="VBoxContainer"]
+[node name="HealthContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-text = "Health : 0"
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
-[node name="SelectedPlant" type="Label" parent="VBoxContainer"]
+[node name="Heart" type="TextureRect" parent="MarginContainer/VBoxContainer2/HealthContainer"]
+material = SubResource("ShaderMaterial_4mubi")
 layout_mode = 2
-text = "Selected Plant: "
+texture = ExtResource("2_t0d42")
+expand_mode = 3
 
-[node name="SelectedPlantCost" type="Label" parent="VBoxContainer"]
+[node name="Heart2" type="TextureRect" parent="MarginContainer/VBoxContainer2/HealthContainer"]
+material = SubResource("ShaderMaterial_4mubi")
 layout_mode = 2
-text = "Plant Cost: "
+texture = ExtResource("2_t0d42")
+expand_mode = 3
 
-[node name="LevelVictoryCondition" type="Label" parent="VBoxContainer"]
+[node name="Heart3" type="TextureRect" parent="MarginContainer/VBoxContainer2/HealthContainer"]
+material = SubResource("ShaderMaterial_4mubi")
 layout_mode = 2
-text = "Plant Cost: "
+texture = ExtResource("2_t0d42")
+expand_mode = 3
+
+[node name="Heart4" type="TextureRect" parent="MarginContainer/VBoxContainer2/HealthContainer"]
+material = SubResource("ShaderMaterial_4mubi")
+layout_mode = 2
+texture = ExtResource("2_t0d42")
+expand_mode = 3
+
+[node name="Heart5" type="TextureRect" parent="MarginContainer/VBoxContainer2/HealthContainer"]
+material = SubResource("ShaderMaterial_4mubi")
+layout_mode = 2
+texture = ExtResource("2_t0d42")
+expand_mode = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer2/HBoxContainer2"]
+material = SubResource("ShaderMaterial_4mubi")
+layout_mode = 2
+texture = ExtResource("3_hlvv1")
+expand_mode = 3
+
+[node name="Gold" type="Label" parent="MarginContainer/VBoxContainer2/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "000"
+
+[node name="PlantContainer" type="HBoxContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 8
+
+[node name="MushroomPanel" parent="MarginContainer/PlantContainer" instance=ExtResource("5_haxeg")]
+layout_mode = 2
+plant_name = "Mushroom"
+plant_cost = 2
+plant_model = ExtResource("6_6rx21")
+rotation_speed = 0.05
+
+[node name="TreePanel" parent="MarginContainer/PlantContainer" instance=ExtResource("5_haxeg")]
+layout_mode = 2
+plant_name = "Tree"
+plant_cost = 4
+plant_model = ExtResource("7_tpmfo")
+rotation_speed = 0.05
+model_scale = 0.25
+
+[node name="VictoryConditionLabel" type="Label" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "Victory Condition"
