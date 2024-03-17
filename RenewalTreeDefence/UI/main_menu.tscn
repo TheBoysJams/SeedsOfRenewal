@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cn7rsdy4ic8vu"]
+[gd_scene load_steps=7 format=3 uid="uid://cn7rsdy4ic8vu"]
 
 [ext_resource type="Script" path="res://UI/MainMenu.gd" id="1_68kyx"]
 [ext_resource type="Script" path="res://UI/VolumeSlider.gd" id="2_i0hd0"]
 [ext_resource type="PackedScene" uid="uid://bivvk3fq6tihm" path="res://Levels/level_one.tscn" id="2_ndo85"]
 [ext_resource type="Texture2D" uid="uid://cdv5po6dwdsmj" path="res://Assets/Images/Forest.jpg" id="3_bwmo5"]
 [ext_resource type="PackedScene" uid="uid://3ajgyturdg8s" path="res://UI/sound_button.tscn" id="5_uoy87"]
+[ext_resource type="PackedScene" uid="uid://ca1wfwi3puijs" path="res://UI/controls_gui.tscn" id="6_6fam1"]
 
 [node name="MainMenu" type="CanvasLayer"]
 process_mode = 3
@@ -24,6 +25,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -97,6 +102,10 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Exit"
+
+[node name="ControlsGUI" parent="MarginContainer" instance=ExtResource("6_6fam1")]
+layout_mode = 2
+size_flags_horizontal = 8
 
 [connection signal="value_changed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/SfxSlider" to="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/SfxSlider" method="_on_value_changed"]
 [connection signal="value_changed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MusicSlider" to="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MusicSlider" method="_on_value_changed"]

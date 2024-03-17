@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cm4gkchemv2ui"]
+[gd_scene load_steps=5 format=3 uid="uid://cm4gkchemv2ui"]
 
 [ext_resource type="Script" path="res://UI/PauseMenu.gd" id="1_6qgws"]
 [ext_resource type="Script" path="res://UI/VolumeSlider.gd" id="2_ll2cs"]
 [ext_resource type="PackedScene" uid="uid://3ajgyturdg8s" path="res://UI/sound_button.tscn" id="3_m1w8j"]
+[ext_resource type="PackedScene" uid="uid://ca1wfwi3puijs" path="res://UI/controls_gui.tscn" id="4_48q75"]
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
@@ -15,6 +16,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -90,6 +95,11 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Exit to Menu"
+
+[node name="ControlsGUI" parent="MarginContainer" instance=ExtResource("4_48q75")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
 
 [connection signal="value_changed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/SfxSlider" to="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/SfxSlider" method="_on_value_changed"]
 [connection signal="value_changed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MusicSlider" to="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MusicSlider" method="_on_value_changed"]
