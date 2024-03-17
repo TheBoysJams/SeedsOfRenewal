@@ -119,12 +119,12 @@ visible = false
 [node name="TowerManager" parent="." node_paths=PackedStringArray("player") instance=ExtResource("11_kutpd")]
 player = NodePath("../Player")
 
+[connection signal="Victory" from="GUI" to="VictoryMenu" method="OnVictory"]
 [connection signal="Defated" from="Player" to="DefeatMenu" method="OnDefeated"]
 [connection signal="GoldChanged" from="Player" to="." method="_on_player_gold_changed"]
 [connection signal="GoldChanged" from="Player" to="GUI" method="OnGoldChanged"]
 [connection signal="HealthChanged" from="Player" to="GUI" method="OnHealthChanged"]
 [connection signal="OnLoaded" from="Player" to="GUI" method="OnVictoryConditionChanged"]
 [connection signal="SelectedTowerChanged" from="Player" to="GUI" method="OnSelectedTowerChanged"]
-[connection signal="Victory" from="Player" to="VictoryMenu" method="OnVictory"]
 
 [editable path="EnemyManager"]

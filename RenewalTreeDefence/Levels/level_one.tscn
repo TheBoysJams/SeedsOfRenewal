@@ -91,6 +91,5 @@ player = NodePath("../Player")
 [connection signal="HealthChanged" from="Player" to="GUI" method="OnHealthChanged"]
 [connection signal="OnLoaded" from="Player" to="GUI" method="OnVictoryConditionChanged"]
 [connection signal="SelectedTowerChanged" from="Player" to="GUI" method="OnSelectedTowerChanged"]
-[connection signal="Victory" from="Player" to="GUI" method="OnVictory"]
 
 [editable path="EnemyManager"]

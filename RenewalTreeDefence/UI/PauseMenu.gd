@@ -1,6 +1,5 @@
 extends CanvasLayer
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Connect the buttons to their signals
@@ -16,16 +15,11 @@ func _unhandled_input(event):
 			get_tree().paused = true
 			visible = true
 			
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 
 func _on_resume_button_pressed():
 	# Resume the game
 	get_tree().paused = false
 	visible = false
-
 
 func _on_exit_to_menu_button_pressed():
 	var main_menu_scene = load("res://UI/main_menu.tscn") as PackedScene

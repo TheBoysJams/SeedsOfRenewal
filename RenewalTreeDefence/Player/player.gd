@@ -16,7 +16,6 @@ signal HealthChanged(int)
 signal GoldChanged(int)
 signal SelectedTowerChanged(TowerInfo)
 signal Defated()
-signal Victory()
 signal OnLoaded(int)
 
 var health:int:
@@ -35,8 +34,6 @@ var gold:int:
 	set(gold_in):
 		gold = max(gold_in,0)
 		GoldChanged.emit(gold)
-		if gold >= goldToWin:
-			Victory.emit()
 
 enum TileType {
 	Dirt = 0,
@@ -53,7 +50,7 @@ func _ready() -> void:
 	selectedTowerIndex = 0
 	OnLoaded.emit(goldToWin)
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Plant1"):
 		selectedTowerIndex = 0
 	if Input.is_action_just_pressed("Plant2"):
@@ -79,6 +76,7 @@ func UpdateCameraZoom()-> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 	if towerManager.towers.size() == 0: 
 		print("No towers in the towerManager")
 		return

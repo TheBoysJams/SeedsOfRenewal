@@ -19,7 +19,7 @@ func Attack() ->void:
 		shot.direction = turret.global_transform.basis.z
 		$Chicken2/AnimationPlayer.play("Attack")
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	target = GetClosestTarget()
 	if target && turret:
 		turret.look_at(target.global_position,Vector3.UP,true)
