@@ -1,6 +1,6 @@
 class_name RangedTower extends Tower
 
-var turretRange:= 10.0
+var turretRange:= 12.0
 var target: PathFollow3D
 @export var projectile: PackedScene
 @export var turret:Node3D
