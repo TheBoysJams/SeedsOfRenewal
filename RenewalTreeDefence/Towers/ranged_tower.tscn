@@ -13,7 +13,7 @@ projectile = ExtResource("3_4vfpk")
 turret = NodePath("Chicken2")
 
 [node name="AttackTimer" parent="." index="0"]
-wait_time = 0.7
+wait_time = 0.65
 
 [node name="Grass2" parent="." index="1" instance=ExtResource("2_a1h4j")]
 visible = false
