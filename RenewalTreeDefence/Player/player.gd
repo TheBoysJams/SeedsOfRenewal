@@ -17,6 +17,7 @@ signal GoldChanged(int)
 signal SelectedTowerChanged(TowerInfo)
 signal Defated()
 signal OnLoaded(int)
+signal CursorChanged(CursorShape)
 
 var health:int:
 	set(hp_in):
@@ -76,7 +77,6 @@ func UpdateCameraZoom()-> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 	if towerManager.towers.size() == 0: 
 		print("No towers in the towerManager")
 		return
@@ -84,23 +84,24 @@ func _process(_delta: float) -> void:
 	ray_cast_3d.target_position = camera.project_local_ray_normal(mouse_pos) * 1000
 	ray_cast_3d.force_raycast_update()
 	if !ray_cast_3d.is_colliding():
-		Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+		CursorChanged.emit(Control.CURSOR_ARROW)
 		return
 	var collider = ray_cast_3d.get_collider()
 	if !collider is GridMap:
-		Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+		CursorChanged.emit(Control.CURSOR_ARROW)
 		return
 	var collision_point = ray_cast_3d.get_collision_point()
 	var cell = GetCellAtPosition(collision_point)
 	var selectedTower = towerManager.towers[selectedTowerIndex]
 	if gridmap.get_cell_item(cell) == selectedTower.TileType:
-		Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+		CursorChanged.emit(Control.CURSOR_POINTING_HAND)
 		if Input.is_action_just_pressed("left_click"):
 			if gold >= selectedTower.Cost:
 				towerManager.BuildTower(selectedTowerIndex,GetCellLocalPosition(cell))
 				gold -= selectedTower.Cost
 				SetCellState(cell,selectedTower.BuiltTileType)
-	else: Input.set_default_cursor_shape(Input.CURSOR_FORBIDDEN)
+	else:	
+		CursorChanged.emit(Control.CURSOR_FORBIDDEN)
 
 func GetCellAtPosition(pos:Vector3) -> Vector3i:
 	return gridmap.local_to_map(pos)

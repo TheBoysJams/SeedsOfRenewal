@@ -121,6 +121,7 @@ visible = false
 player = NodePath("../Player")
 
 [connection signal="Victory" from="GUI" to="VictoryMenu" method="OnVictory"]
+[connection signal="CursorChanged" from="Player" to="GUI" method="OnCursorChange"]
 [connection signal="Defated" from="Player" to="DefeatMenu" method="OnDefeated"]
 [connection signal="GoldChanged" from="Player" to="." method="_on_player_gold_changed"]
 [connection signal="GoldChanged" from="Player" to="GUI" method="OnGoldChanged"]

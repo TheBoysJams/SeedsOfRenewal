@@ -12,11 +12,9 @@ signal Victory()
 
 var victory_condition: int = 99999
 
-
 func _ready():
 	complete_level_button.disabled = true
 	check_box.button_pressed = PlayerGlobal.auto_complete_state
-
 
 func OnHealthChanged(health:int) -> void:
 	for i in health_container_scene.get_child_count():
@@ -40,26 +38,24 @@ func OnSelectedTowerChanged(towerInfo:TowerInfo) -> void:
 			plant_container_scene.get_child(i).find_child("PlantPanelContainer").self_modulate = Color(1,1,1,0.6)
 			plant_container_scene.get_child(i).rotation_speed = 0.0
 
-
 func OnVictoryConditionChanged(victoryCondition:int)-> void:
 	victory_condition = victoryCondition
 	win_condition_label.text = "Required: " + str(victoryCondition)
-
 
 func _on_mushroom_panel_gui_input(event):
 	if event.is_action_pressed("left_click"):
 		player.selectedTowerIndex = 0
 
-
-
 func _on_tree_panel_gui_input(event):
 	if event.is_action_pressed("left_click"):
 		player.selectedTowerIndex = 1
 
-
 func _on_complete_level_button_pressed():
 	Victory.emit()
 
-
 func _on_check_box_toggled(toggled_on):
 	PlayerGlobal.auto_complete_state = toggled_on
+	
+func OnCursorChange(shape:Control.CursorShape) -> void:
+	#get_child(0) is getting the marginContainer (a type of Control) and we set the mouse cursor at that level, can't be done on a canvas layer as it's not of type Control
+	get_child(0).set_default_cursor_shape(shape)
