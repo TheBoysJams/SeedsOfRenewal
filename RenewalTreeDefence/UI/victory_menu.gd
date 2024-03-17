@@ -1,6 +1,8 @@
 extends CanvasLayer
 
 @export var nextLevel:PackedScene
+@onready var victory_sfx: AudioStreamPlayer = $VictorySFX
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	visible = false
@@ -20,5 +22,7 @@ func _on_exit_to_menu_button_pressed():
 
 
 func OnVictory() -> void:
+	if victory_sfx:
+		victory_sfx.play()
 	get_tree().paused = true
 	visible = true

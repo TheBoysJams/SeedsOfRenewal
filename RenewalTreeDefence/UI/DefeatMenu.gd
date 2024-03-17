@@ -1,4 +1,5 @@
 extends CanvasLayer
+@onready var defeat_sfx: AudioStreamPlayer = $DefeatSFX
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,5 +19,7 @@ func _on_exit_to_menu_button_pressed():
 	get_tree().change_scene_to_packed(main_menu_scene)
 
 func OnDefeated() -> void:
+	if defeat_sfx:
+		defeat_sfx.play()
 	get_tree().paused = true
 	visible = true
