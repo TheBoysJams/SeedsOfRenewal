@@ -4,6 +4,16 @@ extends CanvasLayer
 
 @onready var health_container_scene = %HealthContainer
 @onready var plant_container_scene = %PlantContainer
+@onready var complete_level_button = $MarginContainer/VBoxContainer/CompleteLevelButton
+@onready var win_condition_label = %WinConditionLabel
+
+signal Victory()
+
+var victory_condition: int = 99999
+
+
+func _ready():
+	complete_level_button.disabled = true
 
 
 func OnHealthChanged(health:int) -> void:
@@ -12,6 +22,8 @@ func OnHealthChanged(health:int) -> void:
 	
 func OnGoldChanged(gold:int) -> void:
 	%GoldLabel.text = str(gold)
+	if gold >= victory_condition:
+		complete_level_button.disabled = false
 	
 func OnSelectedTowerChanged(towerInfo:TowerInfo) -> void:
 	for i in plant_container_scene.get_child_count():
@@ -23,9 +35,9 @@ func OnSelectedTowerChanged(towerInfo:TowerInfo) -> void:
 			plant_container_scene.get_child(i).find_child("PlantPanelContainer").self_modulate = Color(1,1,1,0.6)
 
 
-func OnVictoryConditionChanged(victoryCondition:String)-> void:
-	pass
-	%VictoryConditionLabel.text = victoryCondition
+func OnVictoryConditionChanged(victoryCondition:int)-> void:
+	victory_condition = victoryCondition
+	win_condition_label.text = "Required: " + str(victoryCondition)
 
 
 func _on_mushroom_panel_gui_input(event):
@@ -37,3 +49,6 @@ func _on_tree_panel_gui_input(event):
 	if event.is_action_pressed("left_click"):
 		player.selectedTowerIndex = 1
 
+
+func _on_complete_level_button_pressed():
+	Victory.emit()

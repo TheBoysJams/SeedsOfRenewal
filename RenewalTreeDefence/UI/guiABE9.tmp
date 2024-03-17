@@ -108,34 +108,12 @@ plant_model = ExtResource("7_tpmfo")
 rotation_speed = 0.05
 model_scale = 0.25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
-
-[node name="CompleteLevelButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("8_wb623")]
-custom_minimum_size = Vector2(260, 0)
+[node name="CompleteLevelButton" parent="MarginContainer" instance=ExtResource("8_wb623")]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 32
-text = "Complete Level"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="WinConditionLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "req gold"
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-material = SubResource("ShaderMaterial_4mubi")
-layout_mode = 2
-texture = ExtResource("3_hlvv1")
-expand_mode = 3
+text = "Next Level"
 
 [connection signal="gui_input" from="MarginContainer/PlantContainer/MushroomPanel" to="." method="_on_mushroom_panel_gui_input"]
 [connection signal="gui_input" from="MarginContainer/PlantContainer/TreePanel" to="." method="_on_tree_panel_gui_input"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/CompleteLevelButton" to="." method="_on_complete_level_button_pressed"]

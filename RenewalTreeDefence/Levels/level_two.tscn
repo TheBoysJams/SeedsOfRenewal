@@ -97,6 +97,7 @@ nextLevel = ExtResource("11_jt4af")
 [node name="TowerManager" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_40q37")]
 player = NodePath("../Player")
 
+[connection signal="Victory" from="GUI" to="VictoryMenu" method="OnVictory"]
 [connection signal="Defated" from="Player" to="DefeatMenu" method="OnDefeated"]
 [connection signal="GoldChanged" from="Player" to="." method="_on_player_gold_changed"]
 [connection signal="GoldChanged" from="Player" to="GUI" method="OnGoldChanged"]
