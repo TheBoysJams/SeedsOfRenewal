@@ -8,10 +8,10 @@ func _ready():
 
 func _unhandled_input(event):
 	if event.is_action_pressed("escape"):
-		if get_tree().paused:
+		if get_tree().paused && visible:
 			get_tree().paused = false
 			visible = false
-		else:
+		elif !get_tree().paused:
 			get_tree().paused = true
 			visible = true
 			
