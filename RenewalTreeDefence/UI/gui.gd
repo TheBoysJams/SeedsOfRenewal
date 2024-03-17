@@ -6,6 +6,7 @@ extends CanvasLayer
 @onready var plant_container_scene = %PlantContainer
 @onready var complete_level_button = $MarginContainer/VBoxContainer/CompleteLevelButton
 @onready var win_condition_label = %WinConditionLabel
+@onready var check_box: CheckBox = $MarginContainer/VBoxContainer/CheckBox
 
 signal Victory()
 
@@ -24,6 +25,8 @@ func OnGoldChanged(gold:int) -> void:
 	%GoldLabel.text = str(gold)
 	if gold >= victory_condition:
 		complete_level_button.disabled = false
+		if check_box.toggle_mode == true:
+			Victory.emit()
 	
 func OnSelectedTowerChanged(towerInfo:TowerInfo) -> void:
 	for i in plant_container_scene.get_child_count():
