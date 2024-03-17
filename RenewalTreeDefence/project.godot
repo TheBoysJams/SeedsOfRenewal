@@ -22,7 +22,7 @@ PlayerGlobal="*res://Autoload/player_global.gd"
 
 [display]
 
-window/size/resizable=false
+window/stretch/mode="canvas_items"
 
 [dotnet]
 
