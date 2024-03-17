@@ -8,7 +8,7 @@ func _ready():
 	visible = false
 	if not nextLevel:
 		%NextLevelButton.visible = false
-		%VictoryLabel.text = "You win!"
+		%VictoryLabel.text = "The forest has been renewed, thank you for playing!"
 		
 func _on_nextLevel_button_pressed():
 	get_tree().paused = false
