@@ -25,11 +25,6 @@ layout_mode = 2
 text = "Num 1-2 & Scroll Wheel: Switch Plant"
 horizontal_alignment = 1
 
-[node name="Label5" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-text = "Space: Complete Level"
-horizontal_alignment = 1
-
 [node name="Label3" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "A & D: Rotate Camera"

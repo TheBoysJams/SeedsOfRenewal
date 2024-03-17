@@ -166,4 +166,5 @@ expand_mode = 3
 
 [connection signal="gui_input" from="MarginContainer/PlantContainer/MushroomPanel" to="." method="_on_mushroom_panel_gui_input"]
 [connection signal="gui_input" from="MarginContainer/PlantContainer/TreePanel" to="." method="_on_tree_panel_gui_input"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/CheckBox" to="." method="_on_check_box_toggled"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/CompleteLevelButton" to="." method="_on_complete_level_button_pressed"]

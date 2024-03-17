@@ -15,6 +15,7 @@ var victory_condition: int = 99999
 
 func _ready():
 	complete_level_button.disabled = true
+	check_box.button_pressed = PlayerGlobal.auto_complete_state
 
 
 func OnHealthChanged(health:int) -> void:
@@ -25,7 +26,7 @@ func OnGoldChanged(gold:int) -> void:
 	%GoldLabel.text = str(gold)
 	if gold >= victory_condition:
 		complete_level_button.disabled = false
-		if check_box.toggle_mode == true:
+		if check_box.button_pressed == true:
 			Victory.emit()
 	
 func OnSelectedTowerChanged(towerInfo:TowerInfo) -> void:
@@ -48,6 +49,7 @@ func _on_mushroom_panel_gui_input(event):
 		player.selectedTowerIndex = 0
 
 
+
 func _on_tree_panel_gui_input(event):
 	if event.is_action_pressed("left_click"):
 		player.selectedTowerIndex = 1
@@ -55,3 +57,7 @@ func _on_tree_panel_gui_input(event):
 
 func _on_complete_level_button_pressed():
 	Victory.emit()
+
+
+func _on_check_box_toggled(toggled_on):
+	PlayerGlobal.auto_complete_state = toggled_on
