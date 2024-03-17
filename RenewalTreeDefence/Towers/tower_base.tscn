@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://3digbyjodxia"]
+[gd_scene load_steps=3 format=3 uid="uid://3digbyjodxia"]
 
 [ext_resource type="Script" path="res://Towers/Tower.gd" id="1_yj507"]
+[ext_resource type="AudioStream" uid="uid://b1i7fakl3axua" path="res://Assets/Sounds/squish.wav" id="2_a388x"]
 
 [node name="TowerBase" type="Node3D"]
 script = ExtResource("1_yj507")
@@ -9,6 +10,7 @@ script = ExtResource("1_yj507")
 autostart = true
 
 [node name="TowerSpawnSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_a388x")
 bus = &"sfx"
 
 [connection signal="timeout" from="AttackTimer" to="." method="Attack"]
