@@ -4,7 +4,7 @@ extends Node3D
 @onready var spawners = $Spawners.get_children()
 @export var enemy:PackedScene
 var hpScale:= 1.0
-@export var hpScaleChange:= 0.05
+@export var hpScaleChange:= 0.025
 
 
 func _on_spawn_timer_timeout() -> void:
