@@ -1,4 +1,7 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://ckju245d2jl55"]
+[gd_resource type="Theme" load_steps=16 format=3 uid="uid://ckju245d2jl55"]
+
+[sub_resource type="SystemFont" id="SystemFont_yygs4"]
+font_names = PackedStringArray("Britannic")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sdk0q"]
 
@@ -53,6 +56,9 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
+[sub_resource type="SystemFont" id="SystemFont_suawb"]
+font_names = PackedStringArray("Britannic")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_todjp"]
 content_margin_left = 4.0
 content_margin_top = 4.0
@@ -99,6 +105,9 @@ content_margin_right = 2.0
 content_margin_bottom = 6.0
 bg_color = Color(0.321569, 0.223529, 0.145098, 1)
 
+[sub_resource type="SystemFont" id="SystemFont_yy2cq"]
+font_names = PackedStringArray("Britannic")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1sjhg"]
 bg_color = Color(0.419608, 0.580392, 0.34902, 1)
 border_width_left = 2
@@ -126,11 +135,13 @@ corner_radius_bottom_left = 10
 [resource]
 Button/colors/font_color = Color(0.317647, 0.215686, 0.141176, 1)
 Button/colors/font_focus_color = Color(0.317647, 0.215686, 0.141176, 1)
+Button/fonts/font = SubResource("SystemFont_yygs4")
 Button/styles/focus = SubResource("StyleBoxEmpty_sdk0q")
 Button/styles/hover = SubResource("StyleBoxFlat_b2gqn")
 Button/styles/normal = SubResource("StyleBoxFlat_4mqvl")
 Button/styles/pressed = SubResource("StyleBoxFlat_3evym")
 CompleteLevelButton/base_type = &"Button"
+CompleteLevelButton/fonts/font = SubResource("SystemFont_suawb")
 CompleteLevelButton/styles/normal = SubResource("StyleBoxFlat_todjp")
 HSlider/icons/grabber = SubResource("PlaceholderTexture2D_xtw75")
 HSlider/icons/grabber_highlight = SubResource("PlaceholderTexture2D_hpg5c")
@@ -139,6 +150,7 @@ HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_wx4sp")
 HSlider/styles/slider = SubResource("StyleBoxFlat_7e7vu")
 Label/colors/font_outline_color = Color(0.321569, 0.223529, 0.145098, 1)
 Label/constants/outline_size = 6
+Label/fonts/font = SubResource("SystemFont_yy2cq")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_1sjhg")
 PlantPanel/base_type = &"PanelContainer"
 PlantPanel/styles/panel = SubResource("StyleBoxFlat_qhon1")

@@ -34,9 +34,11 @@ func OnSelectedTowerChanged(towerInfo:TowerInfo) -> void:
 		if towerInfo.Index == i:
 			plant_container_scene.get_child(i).find_child("PlantPanelContainer").custom_minimum_size = Vector2(110,135)
 			plant_container_scene.get_child(i).find_child("PlantPanelContainer").self_modulate = Color(1,1,1,1)
+			plant_container_scene.get_child(i).rotation_speed = 0.1
 		else:
 			plant_container_scene.get_child(i).find_child("PlantPanelContainer").custom_minimum_size = Vector2.ZERO
 			plant_container_scene.get_child(i).find_child("PlantPanelContainer").self_modulate = Color(1,1,1,0.6)
+			plant_container_scene.get_child(i).rotation_speed = 0.0
 
 
 func OnVictoryConditionChanged(victoryCondition:int)-> void:

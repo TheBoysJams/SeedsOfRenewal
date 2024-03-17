@@ -9,8 +9,13 @@ layer = 3
 script = ExtResource("1_pjanx")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-offset_right = 1152.0
-offset_bottom = 648.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="Panel" type="PanelContainer" parent="MarginContainer"]
 custom_minimum_size = Vector2(200, 150)
@@ -18,32 +23,43 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 18
 alignment = 1
 
-[node name="VictoryLabel" type="Label" parent="MarginContainer/Panel/VBoxContainer"]
+[node name="VictoryLabel" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Level Complete!"
 horizontal_alignment = 1
 
-[node name="MarginContainer" type="VBoxContainer" parent="MarginContainer/Panel/VBoxContainer"]
+[node name="MarginContainer" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="NextLevelButton" parent="MarginContainer/Panel/VBoxContainer/MarginContainer" instance=ExtResource("2_33r1u")]
+[node name="NextLevelButton" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/MarginContainer" instance=ExtResource("2_33r1u")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 text = "Next Level"
 
-[node name="ExitToMenuButton" parent="MarginContainer/Panel/VBoxContainer/MarginContainer" instance=ExtResource("2_33r1u")]
+[node name="ExitToMenuButton" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/MarginContainer" instance=ExtResource("2_33r1u")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 text = "Exit to Menu"
 
-[connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/MarginContainer/NextLevelButton" to="." method="_on_nextLevel_button_pressed"]
-[connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/MarginContainer/ExitToMenuButton" to="." method="_on_exit_to_menu_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/NextLevelButton" to="." method="_on_nextLevel_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/ExitToMenuButton" to="." method="_on_exit_to_menu_button_pressed"]
