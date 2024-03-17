@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bvr4hmefx6ew8"]
+[gd_scene load_steps=15 format=3 uid="uid://bvr4hmefx6ew8"]
 
 [ext_resource type="Script" path="res://UI/gui.gd" id="1_727jx"]
 [ext_resource type="Texture2D" uid="uid://c45bdcnuk0c5q" path="res://Assets/Images/Heart.png" id="2_t0d42"]
@@ -11,6 +11,16 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4mubi"]
 shader = ExtResource("2_u1vsv")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pvabs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_py1cy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_55vjq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jwc5t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mdtf6"]
 
 [node name="GUI" type="CanvasLayer"]
 script = ExtResource("1_727jx")
@@ -112,6 +122,24 @@ model_scale = 0.25
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer"]
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.772549, 0.803922, 0.501961, 1)
+theme_override_colors/font_pressed_color = Color(0.772549, 0.803922, 0.501961, 1)
+theme_override_colors/font_hover_color = Color(0.772549, 0.803922, 0.501961, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.772549, 0.803922, 0.501961, 1)
+theme_override_colors/font_focus_color = Color(0.772549, 0.803922, 0.501961, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pvabs")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_py1cy")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_55vjq")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_jwc5t")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mdtf6")
+button_pressed = true
+text = "Auto Complete?  "
+alignment = 1
 
 [node name="CompleteLevelButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("8_wb623")]
 custom_minimum_size = Vector2(260, 0)
